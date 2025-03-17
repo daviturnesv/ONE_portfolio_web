@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Davi Turnes Vieira | Front-end Developer</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    </head>
+    <body>
+        <div class="preloader">
+            <div class="loader">
+                <span class="loader-text">Carregando</span>
+                <div class="dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-progress"></div>
+        <header>
+            <div class="logo">DTVCode</div>
+            <div class="header-controls">
+                <div class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                    <div class="theme-toggle-ball"></div>
+                </div>
+                <div class="language-toggle">
+                    <button class="lang-btn active" data-lang="pt">PT</button>
+                    <span>|</span>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home" class="active" data-i18n="nav_home">Home</a></li>
+                    <li><a href="#about" data-i18n="nav_about">Sobre</a></li>
+                    <li><a href="#skills" data-i18n="nav_skills">Habilidades</a></li>
+                    <li><a href="#projects" data-i18n="nav_projects">Projetos</a></li>
+                    <li><a href="#contact" data-i18n="nav_contact">Contato</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <main>
+            <section id="home" class="hero">
+                <div class="hero-content">
+                    <h1>Eleve seu negócio digital a outro nível <strong>com um Front-end de qualidade!</strong></h1>
+                    <p class="subtitle">Desenvolvimento web com enfoque em experiência de usuário</p>
+                    <div class="cta-buttons">
+                        <a href="#contact" class="btn primary-btn">Vamos conversar</a>
+                        <a href="#projects" class="btn secondary-btn">Ver projetos</a>
+                        <a href="assets/cv_davi_turnes.pdf" download class="btn cv-btn">
+                            <i class="fas fa-file-download"></i> Baixar CV
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="assets/Eu_no_Mine.png" alt="Davi Turnes Vieira" class="profile-image">
+                </div>
+            </section>
+            
+            <section id="about" class="about">
+                <div class="section-header">
+                    <h2>Sobre mim</h2>
+                </div>
+                <div class="about-content">
+                    <div class="about-image">
+                        <img src="assets/definicao SIN.jpg" alt="Programação Web">
+                    </div>
+                    <div class="about-text">
+                        <p>Olá! Sou <strong>Davi Turnes Vieira</strong>, desenvolvedor Front-end com especialidade em <strong>Java, C/C++, Python, JavaScript, HTML e CSS</strong>. Ajudo pequenos negócios e designers a colocarem em prática boas ideias.</p>
+                        <p>Minha paixão é criar interfaces intuitivas e responsivas que proporcionem experiências memoráveis aos usuários.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="stats" class="stats">
+                <div class="stats-container">
+                    <div class="stat-item" data-aos="fade-up">
+                        <span class="stat-number" data-count="2">0</span>
+                        <span class="stat-label">Anos de Experiência</span>
+                    </div>
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+                        <span class="stat-number" data-count="9">0</span>
+                        <span class="stat-label">Projetos Completos</span>
+                    </div>
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+                        <span class="stat-number" data-count="113">0</span>
+                        <span class="stat-label">Commits no GitHub</span>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="competencies" class="competencies">
+                <div class="section-header">
+                    <h2>Competências</h2>
+                </div>
+                <div class="competencies-wrapper">
+                    <div class="competencies-group">
+                        <h3>Desenvolvimento Frontend</h3>
+                        <div class="competencies-tags">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
+                            <span>TypeScript</span>
+                            <span>React</span>
+                            <span>Web APIs</span>
+                            <span>UI/UX Design</span>
+                            <span>Figma</span>
+                        </div>
+                    </div>
+                    
+                    <div class="competencies-group">
+                        <h3>Desenvolvimento Backend</h3>
+                        <div class="competencies-tags">
+                            <span>Java</span>
+                            <span>Spring Boot</span>
+                            <span>C/C++</span>
+                            <span>Python</span>
+                            <span>RESTful APIs</span>
+                            <span>Node.js</span>
+                        </div>
+                    </div>
+                    
+                    <div class="competencies-group">
+                        <h3>Ferramentas e Metodologias</h3>
+                        <div class="competencies-tags">
+                            <span>Git</span>
+                            <span>GitHub</span>
+                            <span>VS Code</span>
+                            <span>IntelliJ IDEA</span>
+                            <span>Scrum</span>
+                            <span>Clean Code</span>
+                            <span>CI/CD</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="skills" class="skills">
+    <div class="section-header">
+        <h2>Habilidades</h2>
+    </div>
+    <div class="skills-grid">
+        <!-- Front-end Development Card -->
+        <div class="skill-card">
+            <img src="assets/paginas_web.webp" alt="Desenvolvimento Front-end">
+            <h3>Desenvolvimento Front-end</h3>
+            <p>Criação de interfaces modernas, responsivas e acessíveis com foco na experiência do usuário</p>
+            <div class="skill-progress">
+                <div class="progress-item">
+                    <span class="skill-name">HTML5</span>
+                    <div class="progress-bar">
+                        <div class="progress" data-width="90%"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <span class="skill-name">CSS3 & Flexbox/Grid</span>
+                    <div class="progress-bar">
+                        <div class="progress" data-width="85%"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <span class="skill-name">JavaScript ES6+</span>
+                    <div class="progress-bar">
+                        <div class="progress" data-width="80%"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-tags">
+                <span>Responsive Design</span>
+                <span>UI/UX</span>
+                <span>Sass/SCSS</span>
+                <span>Bootstrap</span>
+            </div>
+        </div>
+        
+        <!-- Web Applications Card -->
+        <div class="skill-card">
+            <img src="assets/abas_web.webp" alt="Aplicações Web">
+            <h3>Aplicações Web</h3>
+            <p>Desenvolvimento de aplicações web interativas com frameworks modernos e APIs</p>
+            <div class="skill-progress">
+                <div class="progress-item">
+                    <span class="skill-name">React.js</span>
+                    <div class="progress-bar">
+                        <div class="progress" data-width="75%"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <span class="skill-name">API Integration</span>
+                    <div class="progress-bar">
+                        <div class="progress" data-width="85%"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <span class="skill-name">Node.js</span>
+                    <div class="progress-bar">
+                        <div class="progress" data-width="70%"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-tags">
+                <span>RESTful APIs</span>
+                <span>SPA</span>
+                <span>Express</span>
+            </div>
+        </div>
+        
+        <!-- Backend Development Card -->
+        <div class="skill-card">
+            <img src="assets/programacao_web.webp" alt="Desenvolvimento Backend">
+            <h3>Desenvolvimento Backend</h3>
+            <p>Criação de APIs robustas, integração com bancos de dados e gerenciamento de servidores</p>
+            <div class="skill-progress">
+                <div class="progress-item">
+                    <span class="skill-name">Java & Spring</span>
+                    <div class="progress-bar">
+                        <div class="progress" data-width="80%"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <span class="skill-name">Python</span>
+                    <div class="progress-bar">
+                        <div class="progress" data-width="75%"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <span class="skill-name">SQL/NoSQL</span>
+                    <div class="progress-bar">
+                        <div class="progress" data-width="70%"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-tags">
+                <span>C/C++</span>
+                <span>Spring Boot</span>
+                <span>MySQL</span>
+                <span>MongoDB</span>
+            </div>
+        </div>
+        
+        <!-- DevOps/Tools Card -->
+        <div class="skill-card">
+            <img src="assets/DevOps.png" alt="DevOps & Ferramentas">
+            <h3>DevOps & Ferramentas</h3>
+            <p>Automação de processos, versionamento de código e integração/entrega contínua</p>
+            <div class="skill-progress">
+                <div class="progress-item">
+                    <span class="skill-name">Git/GitHub</span>
+                    <div class="progress-bar">
+                        <div class="progress" data-width="85%"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <span class="skill-name">CI/CD</span>
+                    <div class="progress-bar">
+                        <div class="progress" data-width="65%"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <span class="skill-name">Clean Code</span>
+                    <div class="progress-bar">
+                        <div class="progress" data-width="80%"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-tags">
+                <span>VS Code</span>
+                <span>IntelliJ IDEA</span>
+                <span>Scrum</span>
+                <span>Postman</span>
+                <span>Docker</span>
+            </div>
+        </div>
+    </div>
+</section>
+            
+            <section id="projects" class="projects">
+                <div class="section-header">
+                    <h2>Projetos</h2>
+                </div>
+                <div class="project-filter">
+                    <button class="filter-btn active" data-filter="all">Todos</button>
+                    <button class="filter-btn" data-filter="web">Web</button>
+                    <button class="filter-btn" data-filter="java">Java</button>
+                    <button class="filter-btn" data-filter="other">Outros</button>
+                </div>
+                <div class="project-grid">
+                    <!-- Projetos Atuais -->
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="100" data-category="web">
+                        <img src="assets/jogo_numero_secreto_Tela.png" alt="Jogo do Número Secreto">
+                        <h3>Jogo do Número Secreto</h3>
+                        <p>Aplicação web interativa onde o usuário precisa adivinhar um número aleatório através de dicas e tentativas.</p>
+                        <div class="project-tech">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
+                            <span>Web Speech API</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/daviturnesv/ONE_amigoSecreto.git" class="btn project-btn">
+                                <i class="fab fa-github"></i> Ver Código
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="100" data-category="web">
+                        <img src="assets/amigo_secreto_tela_inicial.png" alt="Sorteio de Amigo Secreto">
+                        <h3>Sorteio de Amigo Secreto</h3>
+                        <p>Sistema para organização de amigos secretos com cadastro de participantes, validação de dados e sorteio automático que evita duplicações.</p>
+                        <div class="project-tech">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
+                            <span>API REST</span>
+                            <span>Algoritmos</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/daviturnesv/ONE_challenge-amigo-secreto_v1.git" class="btn project-btn">
+                                <i class="fab fa-github"></i> Ver Código
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="100" data-category="other">
+                        <img src="assets/ourtube_gui.png" alt="OurTube">
+                        <h3>OurTube</h3>
+                        <p>Aplicativo Python para download de vídeos e áudios do YouTube com interface gráfica e modo linha de comando, 
+                            oferecendo seleção de qualidade, download de playlists, extração de MP3, incorporação de miniaturas e organização 
+                            automática de arquivos. Utiliza yt-dlp e FFmpeg para processamento de mídia, com instalação simplificada através 
+                            de script automatizado.</p>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>yt-dlp</span>
+                            <span>FFmpeg</span>
+                            <span>Tkinter</span>
+                            <span>Threading</span>
+                            <span>Mutagen</span>
+                            <span>Pillow</span>
+                            <span>Colorama</span>
+                            <span>tqdm</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/daviturnesv/OurTube" class="btn project-btn">
+                                <i class="fab fa-github"></i> Ver Código
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="100" data-category="java">
+                        <img src="assets/planner_request.png" alt="Java Planner">
+                        <h3>Plann.er</h3>
+                        <p>Aplicação Java com Spring Boot para organizar viagens. Permite criar viagens, adicionar atividades e links, 
+                            convidar participantes via e-mail e gerenciar confirmações, utilizando JPA, H2 Database, Flyway, Lombok e 
+                            Dev Tools.</p>
+                        <div class="project-tech">
+                            <span>Java</span>
+                            <span>Spring Framework</span>
+                            <span>API REST</span>
+                            <span>JPA</span>
+                            <span>H2 Database</span>
+                            <span>Flyway</span>
+                            <span>Lombok</span>
+                            <span>DevTools</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/daviturnesv/nlw16_java_planner" class="btn project-btn">
+                                <i class="fab fa-github"></i> Ver Código
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="100" data-category="java">
+                        <img src="assets/todo_list_post.png" alt="Todo List">
+                        <h3>To-do List</h3>
+                        <p>Sistema de gerenciamento de tarefas completo com funcionalidades de criação, edição, exclusão e marcação de tarefas concluídas.
+                            Desenvolvida com Spring Boot, utilizando Spring Data JPA para persistência de dados, Jakarta Servlet para manipulação de requisições 
+                            HTTP, BCrypt para hashing de senhas e Lombok para simplificação do código.
+                        </p>
+                        <div class="project-tech">
+                            <span>Java</span>
+                            <span>Spring Framework</span>
+                            <span>Jakarta Servlet</span>
+                            <span>BCrypt</span>
+                            <span>Lombok</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/daviturnesv/todolist" class="btn project-btn">
+                                <i class="fab fa-github"></i> Ver Código
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="contact" class="contact">
+                <div class="contact-wave">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                        <path fill="#ffffff" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
+                    </svg>
+                </div>
+                <div class="section-header">
+                    <h2>Entre em contato</h2>
+                    <p class="section-subtitle">Vamos trabalhar juntos no seu próximo projeto</p>
+                </div>
+                
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <div class="contact-card">
+                            <h3>Vamos criar algo incrível juntos</h3>
+                            <p>Estou disponível para projetos freelance, trabalho em equipe ou conversas sobre tecnologia.</p>
+                            
+                            <div class="contact-methods">
+                                <div class="contact-method">
+                                    <div class="method-icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div class="method-details">
+                                        <h4>Email</h4>
+                                        <span>davitv.devcontato@gmail.com</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-method">
+                                    <div class="method-icon">
+                                        <i class="fas fa-phone"></i>
+                                    </div>
+                                    <div class="method-details">
+                                        <h4>Telefone</h4>
+                                        <span>(47) 99900-6277</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-method">
+                                    <div class="method-icon">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="method-details">
+                                        <h4>Localização</h4>
+                                        <span>Florianópolis, Santa Catarina</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="social-links-container">
+                                <h4>Me encontre nas redes</h4>
+                                <div class="social-links">
+                                    <a href="https://www.instagram.com/davi_turnes_v/" class="social-icon" aria-label="Instagram">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                    <a href="https://github.com/daviturnesv" class="social-icon" aria-label="GitHub">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="https://www.linkedin.com/in/davi-turnes" class="social-icon" aria-label="LinkedIn">
+                                        <i class="fab fa-linkedin"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form-container">
+                        <form id="contactForm" class="contact-form">
+                            <h3>Envie uma mensagem</h3>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="name">Nome</label>
+                                    <input type="text" id="name" name="name" placeholder="Seu nome completo" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" name="email" placeholder="seu.email@exemplo.com" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Assunto</label>
+                                <input type="text" id="subject" name="subject" placeholder="Sobre o que você quer conversar?" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Mensagem</label>
+                                <textarea id="message" name="message" rows="5" placeholder="Digite sua mensagem aqui..." required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn primary-btn submit-btn">
+                                <span class="btn-text">Enviar mensagem</span>
+                                <div class="btn-icon"><i class="fas fa-paper-plane"></i></div>
+                                <div class="spinner"></div>
+                            </button>
+                            
+                            <div class="form-status">
+                                <div class="success-message">Mensagem enviada com sucesso! Obrigado pelo contato.</div>
+                                <div class="error-message">Ocorreu um erro ao enviar a mensagem. Por favor, tente novamente.</div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="contact-wave-bottom">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                        <path fill="#1d1d1f" fill-opacity="1" d="M0,224L48,213.3C96,203,192,181,288,176C384,171,480,181,576,197.3C672,213,768,235,864,224C960,213,1056,171,1152,165.3C1248,160,1344,192,1392,208L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+                    </svg>
+                </div>
+            </section>
+            <button class="back-to-top">
+                <i class="fas fa-arrow-up"></i>
+            </button>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 Davi Turnes Vieira | Desenvolvedor Front-end</p>
+        </footer>
+        
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+            AOS.init({
+                duration: 800,
+                once: true
+            });
+        </script>
+        <script>
+            const themeToggle = document.querySelector('.theme-toggle');
+            themeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                localStorage.setItem('dark-mode', document.body.classList.contains('dark-mode'));
+            });
+            
+            if (localStorage.getItem('dark-mode') === 'true') {
+                document.body.classList.add('dark-mode');
+            }
+        </script>
+        <script>
+            window.addEventListener('load', function() {
+                const preloader = document.querySelector('.preloader');
+                preloader.style.opacity = '0';
+                setTimeout(function() {
+                    preloader.style.display = 'none';
+                }, 500);
+            });
+        </script>
+        <script>
+            window.addEventListener('scroll', function() {
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const scrollPercent = (scrollTop / docHeight) * 100;
+                document.querySelector('.scroll-progress').style.width = scrollPercent + '%';
+            });
+        </script>
+        <script>
+            const backToTopBtn = document.querySelector('.back-to-top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+            
+            backToTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        </script>
+        <div class="project-modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div class="modal-body"></div>
+            </div>
+        </div>
+        <script src="https://unpkg.com/vanilla-tilt@1.7.0/dist/vanilla-tilt.min.js"></script>
+        <script>
+            VanillaTilt.init(document.querySelectorAll(".skill-card, .project-card"), {
+                max: 5,
+                speed: 300,
+                glare: true,
+                "max-glare": 0.1,
+            });
+        </script>
+        <script>
+            function animateSkillBars() {
+                const progressBars = document.querySelectorAll('.progress');
+                
+                progressBars.forEach(bar => {
+                    const width = bar.getAttribute('data-width');
+                    bar.style.width = width;
+                });
+            }
+            
+            const skillSection = document.querySelector('.skills');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateSkillBars();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.3 });
+            
+            observer.observe(skillSection);
+        </script>
+        <script>
+            function highlightMenuOnScroll() {
+                const sections = document.querySelectorAll('section');
+                const navLinks = document.querySelectorAll('nav ul li a');
+                
+                window.addEventListener('scroll', () => {
+                    let current = '';
+                    
+                    sections.forEach(section => {
+                        const sectionTop = section.offsetTop;
+                        const sectionHeight = section.clientHeight;
+                        
+                        if (window.pageYOffset >= sectionTop - 200) {
+                            current = section.getAttribute('id');
+                        }
+                    });
+                    
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href').substring(1) === current) {
+                            link.classList.add('active');
+                        }
+                    });
+                });
+            }
+            
+            highlightMenuOnScroll();
+        </script>
+        <script>
+            function animateCounters() {
+                document.querySelectorAll('.stat-number').forEach(counter => {
+                    const target = parseInt(counter.getAttribute('data-count'));
+                    const duration = 2000; // ms
+                    const step = target / duration * 10;
+                    let current = 0;
+                    
+                    const timer = setInterval(() => {
+                        current += step;
+                        counter.textContent = Math.floor(current);
+                        
+                        if (current >= target) {
+                            counter.textContent = target;
+                            clearInterval(timer);
+                        }
+                    }, 10);
+                });
+            }
+
+            const statsSection = document.querySelector('.stats');
+            
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounters();
+                        statsObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            if (statsSection) {
+                statsObserver.observe(statsSection);
+            }
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const filterButtons = document.querySelectorAll('.filter-btn');
+                const projectCards = document.querySelectorAll('.project-card');
+                
+                filterButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        filterButtons.forEach(btn => btn.classList.remove('active'));
+                        this.classList.add('active');
+                        
+                        const filterValue = this.getAttribute('data-filter');
+                        
+                        projectCards.forEach(card => {
+                            if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                                card.classList.remove('hide-project');
+                            } else {
+                                card.classList.add('hide-project');
+                            }
+                        });
+                    });
+                });
+            });
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const projectCards = document.querySelectorAll('.project-card');
+                const projectModal = document.querySelector('.project-modal');
+                const modalBody = document.querySelector('.modal-body');
+                const closeModal = document.querySelector('.close-modal');
+                
+                window.openModal = function(card) {
+                    const title = card.querySelector('h3').textContent;
+                    const description = card.querySelector('p').textContent;
+                    const image = card.querySelector('img').getAttribute('src');
+                    const techSpans = card.querySelectorAll('.project-tech span');
+                    const techList = Array.from(techSpans).map(span => span.textContent);
+                    
+                    let repoLink = '';
+                    const linkElem = card.querySelector('.project-links a');
+                    if (linkElem) {
+                        repoLink = linkElem.getAttribute('href');
+                    }
+                    
+                    const lang = localStorage.getItem('language') || 'pt';
+                    const techTitle = (lang === 'pt') ? 'Tecnologias:' : 'Technologies:';
+                    const githubText = (lang === 'pt') ? 'Ver no GitHub' : 'View on GitHub';
+                    
+                    modalBody.innerHTML = `
+                        <img src="${image}" alt="${title}">
+                        <h3>${title}</h3>
+                        <p>${description}</p>
+                        <div class="modal-tech-list">
+                            <h4>${techTitle}</h4>
+                            <ul>
+                                ${techList.map(tech => `<li>${tech}</li>`).join('')}
+                            </ul>
+                        </div>
+                        ${repoLink ? `
+                        <div class="modal-actions">
+                            <a href="${repoLink}" target="_blank" class="btn primary-btn">
+                                <i class="fab fa-github"></i> ${githubText}
+                            </a>
+                        </div>
+                        ` : ''}
+                    `;
+                    
+                    projectModal.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                };
+                
+                projectCards.forEach(card => {
+                    card.addEventListener('click', function(e) {
+                        if (e.target.closest('.project-links')) {
+                            return;
+                        }
+                        
+                        openModal(this);
+                    });
+                });
+                
+                closeModal.addEventListener('click', function() {
+                    projectModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                });
+                
+                window.addEventListener('click', function(e) {
+                    if (e.target === projectModal) {
+                        projectModal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+        <script>
+            (function() {
+                emailjs.init("RfQczQRFEdJV5YpK-");
+                
+                document.getElementById('contactForm').addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    
+                    const form = this;
+                    form.classList.add('submitting');
+                    
+                    const params = {
+                        name: document.getElementById('name').value,
+                        email: document.getElementById('email').value,
+                        subject: document.getElementById('subject').value,
+                        message: document.getElementById('message').value
+                    };
+                    
+                    emailjs.send('service_o7jhryx', 'template_j65zerc', params)
+                        .then(function() {
+                            form.classList.remove('submitting');
+                            document.querySelector('.success-message').style.display = 'block';
+                            document.querySelector('.error-message').style.display = 'none';
+                            
+                            form.reset();
+                            
+                            setTimeout(() => {
+                                document.querySelector('.success-message').style.display = 'none';
+                            }, 5000);
+                        }, function(error) {
+                            console.error('Erro ao enviar email:', error);
+                            form.classList.remove('submitting');
+                            document.querySelector('.error-message').style.display = 'block';
+                            document.querySelector('.success-message').style.display = 'none';
+                            
+                            setTimeout(() => {
+                                document.querySelector('.error-message').style.display = 'none';
+                            }, 5000);
+                        });
+                });
+            })();
+        </script>
+        <script>
+    const translations = {
+        // Navegação
+        'nav_home': {
+            'pt': 'Home',
+            'en': 'Home'
+        },
+        'nav_about': {
+            'pt': 'Sobre',
+            'en': 'About'
+        },
+        'nav_skills': {
+            'pt': 'Habilidades',
+            'en': 'Skills'
+        },
+        'nav_projects': {
+            'pt': 'Projetos',
+            'en': 'Projects'
+        },
+        'nav_contact': {
+            'pt': 'Contato',
+            'en': 'Contact'
+        },
+
+        // Hero Section
+        'hero_title': {
+            'pt': 'Eleve seu negócio digital a outro nível <strong>com um Front-end de qualidade!</strong>',
+            'en': 'Take your digital business to the next level <strong>with quality Front-end development!</strong>'
+        },
+        'hero_subtitle': {
+            'pt': 'Desenvolvimento web com enfoque em experiência de usuário',
+            'en': 'Web development with a focus on user experience (and occasionally debugging until 3AM)'
+        },
+        'hero_btn_talk': {
+            'pt': 'Vamos conversar',
+            'en': "Let's talk"
+        },
+        'hero_btn_projects': {
+            'pt': 'Ver projetos',
+            'en': 'View projects'
+        },
+        'hero_btn_cv': {
+            'pt': 'Baixar CV',
+            'en': 'Download CV'
+        },
+
+        // About Section
+        'about_title': {
+            'pt': 'Sobre mim',
+            'en': 'About me'
+        },
+        'about_text_1': {
+            'pt': 'Olá! Sou <strong>Davi Turnes Vieira</strong>, desenvolvedor Front-end com especialidade em <strong>Java, C/C++, Python, JavaScript, HTML e CSS</strong>. Ajudo pequenos negócios e designers a colocarem em prática boas ideias.',
+            'en': 'Hello! I\'m <strong>Davi Turnes Vieira</strong>, a Front-end developer specialized in <strong>Java, C/C++, Python, JavaScript, HTML and CSS</strong>. I help small businesses and designers bring great ideas to life.'
+        },
+        'about_text_2': {
+            'pt': 'Minha paixão é criar interfaces intuitivas e responsivas que proporcionem experiências memoráveis aos usuários.',
+            'en': 'My passion is creating intuitive and responsive interfaces that provide memorable user experiences. And yes, I do talk to my code when it doesn\'t work—surprisingly effective!'
+        },
+
+        // Stats Section
+        'stats_experience': {
+            'pt': 'Anos de Experiência',
+            'en': 'Years of Experience'
+        },
+        'stats_projects': {
+            'pt': 'Projetos Completos',
+            'en': 'Completed Projects'
+        },
+        'stats_commits': {
+            'pt': 'Commits no GitHub',
+            'en': 'GitHub Commits'
+        },
+
+        // Competencies Section
+        'competencies_title': {
+            'pt': 'Competências',
+            'en': 'Competencies'
+        },
+        'competencies_frontend': {
+            'pt': 'Desenvolvimento Frontend',
+            'en': 'Frontend Development'
+        },
+        'competencies_backend': {
+            'pt': 'Desenvolvimento Backend',
+            'en': 'Backend Development'
+        },
+        'competencies_tools': {
+            'pt': 'Ferramentas e Metodologias',
+            'en': 'Tools & Methodologies'
+        },
+
+        // Skills Section
+        'skills_title': {
+            'pt': 'Habilidades',
+            'en': 'Skills'
+        },
+        'skills_frontend_title': {
+            'pt': 'Desenvolvimento Front-end',
+            'en': 'Front-end Development'
+        },
+        'skills_frontend_desc': {
+            'pt': 'Criação de interfaces modernas e responsivas usando HTML, CSS e JavaScript',
+            'en': 'Creating modern and responsive interfaces using HTML, CSS and JavaScript'
+        },
+        'skills_web_title': {
+            'pt': 'Aplicações Web',
+            'en': 'Web Applications'
+        },
+        'skills_web_desc': {
+            'pt': 'Desenvolvimento de aplicações web interativas e dinâmicas',
+            'en': 'Development of interactive and dynamic web applications'
+        },
+        'skills_advanced_title': {
+            'pt': 'Programação Avançada',
+            'en': 'Advanced Programming'
+        },
+        'skills_advanced_desc': {
+            'pt': 'Desenvolvimento de soluções usando linguagens modernas',
+            'en': 'Developing solutions using modern languages (and ancient debugging techniques)'
+        },
+        'skills_devops_title': {
+            'pt': 'DevOps & Ferramentas',
+            'en': 'DevOps & Tools'
+        },
+        'skills_devops_desc': {
+            'pt': 'Automação de processos, versionamento de código e integração/entrega contínua',
+            'en': 'Process automation, code versioning and continuous integration/delivery'
+        },
+
+        // Projects Section
+        'projects_title': {
+            'pt': 'Projetos',
+            'en': 'Projects'
+        },
+        'filter_all': {
+            'pt': 'Todos',
+            'en': 'All'
+        },
+        'filter_web': {
+            'pt': 'Web',
+            'en': 'Web'
+        },
+        'filter_java': {
+            'pt': 'Java',
+            'en': 'Java'
+        },
+        'filter_other': {
+            'pt': 'Outros',
+            'en': 'Others'
+        },
+        'project_secret_number_title': {
+            'pt': 'Jogo do Número Secreto',
+            'en': 'Secret Number Game'
+        },
+        'project_secret_number_desc': {
+            'pt': 'Aplicação web interativa onde o usuário precisa adivinhar um número aleatório através de dicas e tentativas.',
+            'en': 'Interactive web application where users must guess a random number through hints and attempts.'
+        },
+        'project_secret_friend_title': {
+            'pt': 'Sorteio de Amigo Secreto',
+            'en': 'Secret Santa Draw'
+        },
+        'project_secret_friend_desc': {
+            'pt': 'Sistema para organização de amigos secretos com cadastro de participantes, validação de dados e sorteio automático que evita duplicações.',
+            'en': 'System for organizing Secret Santa with participant registration, data validation, and automated drawing that prevents duplications.'
+        },
+        'project_ourtube_title': {
+            'pt': 'OurTube',
+            'en': 'OurTube'
+        },
+        'project_ourtube_desc': {
+            'pt': 'Aplicativo Python para download de vídeos e áudios do YouTube com interface gráfica e modo linha de comando, oferecendo seleção de qualidade, download de playlists, extração de MP3, incorporação de miniaturas e organização automática de arquivos. Utiliza yt-dlp e FFmpeg para processamento de mídia, com instalação simplificada através de script automatizado.',
+            'en': 'Python application for downloading YouTube videos and audio with both GUI and command-line interfaces, offering quality selection, playlist downloads, MP3 extraction, thumbnail embedding, and automatic file organization. Uses yt-dlp and FFmpeg for media processing, with simplified installation through automated script.'
+        },
+        'project_planner_title': {
+            'pt': 'Plann.er',
+            'en': 'Plann.er'
+        },
+        'project_planner_desc': {
+            'pt': 'Aplicação Java com Spring Boot para organizar viagens. Permite criar viagens, adicionar atividades e links, convidar participantes via e-mail e gerenciar confirmações, utilizando JPA, H2 Database, Flyway, Lombok e Dev Tools.',
+            'en': 'Java application with Spring Boot for organizing trips. Allows creating trips, adding activities and links, inviting participants via email, and managing confirmations, using JPA, H2 Database, Flyway, Lombok, and Dev Tools.'
+        },
+        'project_todo_title': {
+            'pt': 'To-do List',
+            'en': 'To-do List'
+        },
+        'project_todo_desc': {
+            'pt': 'Sistema de gerenciamento de tarefas completo com funcionalidades de criação, edição, exclusão e marcação de tarefas concluídas. Desenvolvida com Spring Boot, utilizando Spring Data JPA para persistência de dados, Jakarta Servlet para manipulação de requisições HTTP, BCrypt para hashing de senhas e Lombok para simplificação do código.',
+            'en': 'Complete task management system with features for creating, editing, deleting, and marking tasks as completed. Developed with Spring Boot, using Spring Data JPA for data persistence, Jakarta Servlet for HTTP request handling, BCrypt for password hashing, and Lombok for code simplification.'
+        },
+        'project_btn_code': {
+            'pt': 'Ver Código',
+            'en': 'View Code'
+        },
+
+        // Contact Section
+        'contact_title': {
+            'pt': 'Entre em contato',
+            'en': 'Contact me'
+        },
+        'contact_subtitle': {
+            'pt': 'Vamos trabalhar juntos no seu próximo projeto',
+            'en': 'Let\'s work together on your next project'
+        },
+        'contact_card_title': {
+            'pt': 'Vamos criar algo incrível juntos',
+            'en': 'Let\'s create something amazing together'
+        },
+        'contact_card_text': {
+            'pt': 'Estou disponível para projetos freelance, trabalho em equipe ou conversas sobre tecnologia.',
+            'en': 'I\'m available for freelance projects, teamwork, or discussions about technology. I promise my code is better than my coffee jokes, which are mostly grounds for dismissal.'
+        },
+        'contact_email': {
+            'pt': 'Email',
+            'en': 'Email'
+        },
+        'contact_phone': {
+            'pt': 'Telefone',
+            'en': 'Phone'
+        },
+        'contact_location': {
+            'pt': 'Localização',
+            'en': 'Location'
+        },
+        'contact_location_value': {
+            'pt': 'Florianópolis, Santa Catarina',
+            'en': 'Florianópolis, Santa Catarina, Brazil'
+        },
+        'contact_social': {
+            'pt': 'Me encontre nas redes',
+            'en': 'Find me on social media'
+        },
+        'form_title': {
+            'pt': 'Envie uma mensagem',
+            'en': 'Send a message'
+        },
+        'form_name': {
+            'pt': 'Nome',
+            'en': 'Name'
+        },
+        'form_name_placeholder': {
+            'pt': 'Seu nome completo',
+            'en': 'Your full name'
+        },
+        'form_email': {
+            'pt': 'Email',
+            'en': 'Email'
+        },
+        'form_email_placeholder': {
+            'pt': 'seu.email@exemplo.com',
+            'en': 'your.email@example.com'
+        },
+        'form_subject': {
+            'pt': 'Assunto',
+            'en': 'Subject'
+        },
+        'form_subject_placeholder': {
+            'pt': 'Sobre o que você quer conversar?',
+            'en': 'What would you like to discuss?'
+        },
+        'form_message': {
+            'pt': 'Mensagem',
+            'en': 'Message'
+        },
+        'form_message_placeholder': {
+            'pt': 'Digite sua mensagem aqui...',
+            'en': 'Type your message here...'
+        },
+        'form_submit': {
+            'pt': 'Enviar mensagem',
+            'en': 'Send message'
+        },
+        'form_success': {
+            'pt': 'Mensagem enviada com sucesso! Obrigado pelo contato.',
+            'en': 'Message sent successfully! Thank you for contacting me.'
+        },
+        'form_error': {
+            'pt': 'Ocorreu um erro ao enviar a mensagem. Por favor, tente novamente.',
+            'en': 'An error occurred while sending the message. Please try again.'
+        },
+
+        // Footer
+        'footer_text': {
+            'pt': '&copy; 2025 Davi Turnes Vieira | Desenvolvedor Front-end',
+            'en': '&copy; 2025 Davi Turnes Vieira | Front-end Developer'
+        },
+
+        // Modal
+        'modal_tech': {
+            'pt': 'Tecnologias:',
+            'en': 'Technologies:'
+        },
+        'modal_github': {
+            'pt': 'Ver no GitHub',
+            'en': 'View on GitHub'
+        }
+    };
+
+    console.log('Translations object:', translations);
+
+    function changeLanguage(lang) {
+        console.log('Changing language to:', lang);
+        document.documentElement.setAttribute('lang', lang);
+        localStorage.setItem('language', lang);
+        
+        const translatableElements = document.querySelectorAll('[data-i18n]');
+        console.log('Found', translatableElements.length, 'translatable elements');
+        
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.getAttribute('data-lang') === lang) {
+                btn.classList.add('active');
+            }
+        });
+        
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            if (translations[key] && translations[key][lang]) {
+                if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                    element.placeholder = translations[key][lang];
+                } else {
+                    element.innerHTML = translations[key][lang];
+                }
+            }
+        });
+    }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        setupTranslatableElements();
+        
+        document.querySelectorAll('.lang-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const lang = this.getAttribute('data-lang');
+                changeLanguage(lang);
+            });
+        });
+        
+        const savedLanguage = localStorage.getItem('language') || 'pt';
+        changeLanguage(savedLanguage);
+    });
+    
+    function setupTranslatableElements() {
+        // Navegação
+        const navItems = document.querySelectorAll('nav ul li a');
+        if (navItems.length >= 5) {
+            navItems[0].setAttribute('data-i18n', 'nav_home');
+            navItems[1].setAttribute('data-i18n', 'nav_about');
+            navItems[2].setAttribute('data-i18n', 'nav_skills');
+            navItems[3].setAttribute('data-i18n', 'nav_projects');
+            navItems[4].setAttribute('data-i18n', 'nav_contact');
+        }
+        
+        // Seção Hero
+        const heroH1 = document.querySelector('.hero h1');
+        if (heroH1) heroH1.setAttribute('data-i18n', 'hero_title');
+        
+        const subtitle = document.querySelector('.subtitle');
+        if (subtitle) subtitle.setAttribute('data-i18n', 'hero_subtitle');
+        
+        // Botões do Hero
+        const cvBtn = document.querySelector('.cv-btn');
+        if (cvBtn) cvBtn.innerHTML = '<i class="fas fa-file-download"></i> <span data-i18n="hero_btn_cv">Baixar CV</span>';
+        
+        const contactBtn = document.querySelector('a[href="#contact"].btn');
+        if (contactBtn) contactBtn.innerHTML = '<span data-i18n="hero_btn_talk">Vamos conversar</span>';
+        
+        const projectsBtn = document.querySelector('a[href="#projects"].btn');
+        if (projectsBtn) projectsBtn.innerHTML = '<span data-i18n="hero_btn_projects">Ver projetos</span>';
+        
+        // Seção Sobre
+        const aboutHeader = document.querySelector('#about .section-header h2');
+        if (aboutHeader) aboutHeader.setAttribute('data-i18n', 'about_title');
+        
+        const aboutTexts = document.querySelectorAll('#about .about-text p');
+        if (aboutTexts.length >= 2) {
+            aboutTexts[0].setAttribute('data-i18n', 'about_text_1');
+            aboutTexts[1].setAttribute('data-i18n', 'about_text_2');
+        }
+        
+        // Seção Estatísticas
+        const statLabels = document.querySelectorAll('.stat-label');
+        if (statLabels.length >= 3) {
+            statLabels[0].setAttribute('data-i18n', 'stats_experience');
+            statLabels[1].setAttribute('data-i18n', 'stats_projects');
+            statLabels[2].setAttribute('data-i18n', 'stats_commits');
+        }
+        
+        // Seção Competências
+        const competenciesHeader = document.querySelector('#competencies .section-header h2');
+        if (competenciesHeader) competenciesHeader.setAttribute('data-i18n', 'competencies_title');
+        
+        const competencyGroups = document.querySelectorAll('.competencies-group h3');
+        if (competencyGroups.length >= 3) {
+            competencyGroups[0].setAttribute('data-i18n', 'competencies_frontend');
+            competencyGroups[1].setAttribute('data-i18n', 'competencies_backend');
+            competencyGroups[2].setAttribute('data-i18n', 'competencies_tools');
+        }
+        
+        // Seção Habilidades
+        const skillsHeader = document.querySelector('#skills .section-header h2');
+        if (skillsHeader) skillsHeader.setAttribute('data-i18n', 'skills_title');
+        
+        const skillCards = document.querySelectorAll('.skill-card');
+        if (skillCards.length >= 4) {
+            // Primeiro card de habilidade - Frontend
+            const frontendTitle = skillCards[0].querySelector('h3');
+            if (frontendTitle) frontendTitle.setAttribute('data-i18n', 'skills_frontend_title');
+            
+            const frontendDesc = skillCards[0].querySelector('p');
+            if (frontendDesc) frontendDesc.setAttribute('data-i18n', 'skills_frontend_desc');
+            
+            // Segundo card de habilidade - Aplicações Web
+            const webTitle = skillCards[1].querySelector('h3');
+            if (webTitle) webTitle.setAttribute('data-i18n', 'skills_web_title');
+            
+            const webDesc = skillCards[1].querySelector('p');
+            if (webDesc) webDesc.setAttribute('data-i18n', 'skills_web_desc');
+            
+            // Terceiro card de habilidade - Programação Avançada
+            const advTitle = skillCards[2].querySelector('h3');
+            if (advTitle) advTitle.setAttribute('data-i18n', 'skills_advanced_title');
+            
+            const advDesc = skillCards[2].querySelector('p');
+            if (advDesc) advDesc.setAttribute('data-i18n', 'skills_advanced_desc');
+            
+            // Terceiro card de habilidade - DevOps
+            const devopsTitle = skillCards[3].querySelector('h3');
+            if (devopsTitle) devopsTitle.setAttribute('data-i18n', 'skills_devops_title');
+            
+            const devopsDesc = skillCards[3].querySelector('p');
+            if (devopsDesc) devopsDesc.setAttribute('data-i18n', 'skills_devops_desc');
+        }
+        
+        // Seção Projetos
+        const projectsHeader = document.querySelector('#projects .section-header h2');
+        if (projectsHeader) projectsHeader.setAttribute('data-i18n', 'projects_title');
+        
+        // Botões de filtro de projetos
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        if (filterBtns.length >= 4) {
+            filterBtns[0].setAttribute('data-i18n', 'filter_all');
+            filterBtns[1].setAttribute('data-i18n', 'filter_web');
+            filterBtns[2].setAttribute('data-i18n', 'filter_java');
+            filterBtns[3].setAttribute('data-i18n', 'filter_other');
+        }
+        
+        // Cards de projetos individuais
+        const projectCards = document.querySelectorAll('.project-card');
+        projectCards.forEach((card, index) => {
+            const projectTitle = card.querySelector('h3');
+            const projectDesc = card.querySelector('p');
+            const projectBtn = card.querySelector('.project-btn');
+            
+            if (projectTitle && projectDesc) {
+                // Atribuir traduções com base no texto do título para mapeamento
+                const titleText = projectTitle.textContent.trim();
+                
+                if (titleText === "Jogo do Número Secreto") {
+                    projectTitle.setAttribute('data-i18n', 'project_secret_number_title');
+                    projectDesc.setAttribute('data-i18n', 'project_secret_number_desc');
+                } else if (titleText === "Sorteio de Amigo Secreto") {
+                    projectTitle.setAttribute('data-i18n', 'project_secret_friend_title');
+                    projectDesc.setAttribute('data-i18n', 'project_secret_friend_desc');
+                } else if (titleText === "OurTube") {
+                    projectTitle.setAttribute('data-i18n', 'project_ourtube_title');
+                    projectDesc.setAttribute('data-i18n', 'project_ourtube_desc');
+                } else if (titleText === "Plann.er") {
+                    projectTitle.setAttribute('data-i18n', 'project_planner_title');
+                    projectDesc.setAttribute('data-i18n', 'project_planner_desc');
+                } else if (titleText === "To-do List") {
+                    projectTitle.setAttribute('data-i18n', 'project_todo_title');
+                    projectDesc.setAttribute('data-i18n', 'project_todo_desc');
+                }
+            }
+            
+            if (projectBtn) {
+                const btnText = document.createElement('span');
+                btnText.setAttribute('data-i18n', 'project_btn_code');
+                btnText.textContent = 'Ver Código';
+                
+                const icon = projectBtn.querySelector('i.fab');
+                
+                projectBtn.innerHTML = '';
+                if (icon) projectBtn.appendChild(icon.cloneNode(true));
+                projectBtn.appendChild(document.createTextNode(' '));
+                projectBtn.appendChild(btnText);
+            }
+        });
+        
+        // Seção Contato
+        const contactHeader = document.querySelector('#contact .section-header h2');
+        if (contactHeader) contactHeader.setAttribute('data-i18n', 'contact_title');
+        
+        const contactSubtitle = document.querySelector('#contact .section-subtitle');
+        if (contactSubtitle) contactSubtitle.setAttribute('data-i18n', 'contact_subtitle');
+        
+        // Cartão de contato
+        const contactCard = document.querySelector('.contact-card');
+        if (contactCard) {
+            const cardTitle = contactCard.querySelector('h3');
+            if (cardTitle) cardTitle.setAttribute('data-i18n', 'contact_card_title');
+            
+            const cardText = contactCard.querySelector('p');
+            if (cardText) cardText.setAttribute('data-i18n', 'contact_card_text');
+            
+            // Cabeçalhos de métodos de contato
+            const methodDetails = contactCard.querySelectorAll('.method-details h4');
+            if (methodDetails.length >= 3) {
+                methodDetails[0].setAttribute('data-i18n', 'contact_email');
+                methodDetails[1].setAttribute('data-i18n', 'contact_phone');
+                methodDetails[2].setAttribute('data-i18n', 'contact_location');
+            }
+            
+            // Valor da localização (específico para tradução com Brasil)
+            const locationSpan = contactCard.querySelector('.method-details h4[data-i18n="contact_location"] + span');
+            if (locationSpan) locationSpan.setAttribute('data-i18n', 'contact_location_value');
+            
+            // Cabeçalho de links sociais
+            const socialHeader = contactCard.querySelector('.social-links-container h4');
+            if (socialHeader) socialHeader.setAttribute('data-i18n', 'contact_social');
+        }
+        
+        // Formulário de contato
+        const contactForm = document.querySelector('.contact-form');
+        if (contactForm) {
+            const formTitle = contactForm.querySelector('h3');
+            if (formTitle) formTitle.setAttribute('data-i18n', 'form_title');
+            
+            // Rótulos do formulário
+            const formLabels = contactForm.querySelectorAll('label');
+            if (formLabels.length >= 4) {
+                formLabels[0].setAttribute('data-i18n', 'form_name');
+                formLabels[1].setAttribute('data-i18n', 'form_email');
+                formLabels[2].setAttribute('data-i18n', 'form_subject');
+                formLabels[3].setAttribute('data-i18n', 'form_message');
+            }
+            
+            // Placeholders de entrada do formulário
+            const nameInput = contactForm.querySelector('#name');
+            if (nameInput) nameInput.setAttribute('data-i18n', 'form_name_placeholder');
+            
+            const emailInput = contactForm.querySelector('#email');
+            if (emailInput) emailInput.setAttribute('data-i18n', 'form_email_placeholder');
+            
+            const subjectInput = contactForm.querySelector('#subject');
+            if (subjectInput) subjectInput.setAttribute('data-i18n', 'form_subject_placeholder');
+            
+            const messageInput = contactForm.querySelector('#message');
+            if (messageInput) messageInput.setAttribute('data-i18n', 'form_message_placeholder');
+            
+            // Botão de envio
+            const submitBtn = contactForm.querySelector('.submit-btn .btn-text');
+            if (submitBtn) submitBtn.setAttribute('data-i18n', 'form_submit');
+            
+            // Mensagens do formulário
+            const successMsg = contactForm.querySelector('.success-message');
+            if (successMsg) successMsg.setAttribute('data-i18n', 'form_success');
+            
+            const errorMsg = contactForm.querySelector('.error-message');
+            if (errorMsg) errorMsg.setAttribute('data-i18n', 'form_error');
+        }
+        
+        // Rodapé
+        const footerText = document.querySelector('footer p');
+        if (footerText) footerText.setAttribute('data-i18n', 'footer_text');
+    }
+</script>
+    </body>
+</html>
