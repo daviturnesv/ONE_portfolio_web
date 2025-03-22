@@ -3,58 +3,78 @@
  * Gerencia o destaque do menu ao rolar e a navegação mobile
  */
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Adicionar funcionalidade de alternância do menu mobile
-    const mobileMenuButton = document.querySelector('.mobile-menu-button');
-    const navMenu = document.querySelector('nav ul');
-    
-    if (mobileMenuButton && navMenu) {
-        mobileMenuButton.addEventListener('click', function() {
-            navMenu.classList.toggle('show');
-            mobileMenuButton.classList.toggle('active');
-            document.body.classList.toggle('menu-open');
-        });
-        
-        // Fechar menu mobile ao clicar em um link
-        const navLinks = document.querySelectorAll('nav ul li a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                if (window.innerWidth <= 768) {
-                    navMenu.classList.remove('show');
-                    mobileMenuButton.classList.remove('active');
-                    document.body.classList.remove('menu-open');
-                }
-            });
-        });
-    }
-    
-    // Funcionalidade de destaque do menu ao rolar
-    function highlightMenuOnScroll() {
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('nav ul li a');
-        
-        window.addEventListener('scroll', () => {
-            let current = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                
-                if (window.pageYOffset >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                // Ativar apenas links que apontam para seções dentro da página atual
-                const href = link.getAttribute('href');
-                if (href.startsWith('#') && href.substring(1) === current) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    }
-    
-    highlightMenuOnScroll();
+document.addEventListener('DOMContentLoaded', () => {
+    const navegacao = new GerenciadorNavegacao();
+    navegacao.inicializar();
 });
+
+class GerenciadorNavegacao {
+    constructor() {
+        this.botaoMenuMobile = document.querySelector('.mobile-menu-button');
+        this.menuNavegacao = document.querySelector('nav ul');
+        this.linksNavegacao = document.querySelectorAll('nav ul li a');
+        this.secoes = document.querySelectorAll('section');
+        this.tamanhoDaTela = {
+            mobile: 768
+        };
+    }
+    
+    inicializar() {
+        this.configurarMenuMobile();
+        this.configurarDestaqueMenu();
+    }
+    
+    configurarMenuMobile() {
+        if (!this.botaoMenuMobile || !this.menuNavegacao) return;
+        
+        // Alternar menu ao clicar no botão
+        this.botaoMenuMobile.addEventListener('click', () => this.alternarMenuMobile());
+        
+        // Fechar menu ao clicar em um link no mobile
+        this.linksNavegacao.forEach(link => {
+            link.addEventListener('click', () => this.fecharMenuMobileSeNecessario());
+        });
+    }
+    
+    alternarMenuMobile() {
+        this.menuNavegacao.classList.toggle('show');
+        this.botaoMenuMobile.classList.toggle('active');
+        document.body.classList.toggle('menu-open');
+    }
+    
+    fecharMenuMobileSeNecessario() {
+        if (window.innerWidth <= this.tamanhoDaTela.mobile) {
+            this.menuNavegacao.classList.remove('show');
+            this.botaoMenuMobile.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        }
+    }
+    
+    configurarDestaqueMenu() {
+        window.addEventListener('scroll', () => this.destacarMenuAtual());
+    }
+    
+    destacarMenuAtual() {
+        let secaoAtual = '';
+        const offsetDestaque = 200;
+        
+        // Encontrar a seção atual visível
+        this.secoes.forEach(secao => {
+            const topoSecao = secao.offsetTop;
+            
+            if (window.pageYOffset >= topoSecao - offsetDestaque) {
+                secaoAtual = secao.getAttribute('id');
+            }
+        });
+        
+        // Atualizar estado ativo nos links do menu
+        this.linksNavegacao.forEach(link => {
+            link.classList.remove('active');
+            
+            const href = link.getAttribute('href');
+            if (href.startsWith('#') && href.substring(1) === secaoAtual) {
+                link.classList.add('active');
+            }
+        });
+    }
+}

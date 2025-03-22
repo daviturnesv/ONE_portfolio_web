@@ -3,76 +3,107 @@
  * Gerencia preloader, barra de progresso de rolagem e botão de voltar ao topo
  */
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Manipulação do preloader
-    window.addEventListener('load', function() {
+document.addEventListener('DOMContentLoaded', () => {
+    inicializarPreloader();
+    inicializarBarraProgresso();
+    inicializarBotaoTopo();
+    inicializarEfeitosInclinacao();
+});
+
+function inicializarPreloader() {
+    window.addEventListener('load', () => {
         const preloader = document.querySelector('.preloader');
+        if (!preloader) return;
+        
         preloader.style.opacity = '0';
-        setTimeout(function() {
+        setTimeout(() => {
             preloader.style.display = 'none';
         }, 500);
     });
-    
-    // Barra de progresso de rolagem
-    window.addEventListener('scroll', function() {
+}
+
+function inicializarBarraProgresso() {
+    window.addEventListener('scroll', () => {
         const docHeight = document.documentElement.scrollHeight - window.innerHeight;
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         const scrollPercent = (scrollTop / docHeight) * 100;
-        document.querySelector('.scroll-progress').style.width = scrollPercent + '%';
+        
+        const barraProgresso = document.querySelector('.scroll-progress');
+        if (barraProgresso) {
+            barraProgresso.style.width = scrollPercent + '%';
+        }
     });
+}
+
+function inicializarBotaoTopo() {
+    const botaoTopo = document.querySelector('.back-to-top');
+    if (!botaoTopo) return;
     
-    // Botão de voltar ao topo
-    const backToTopBtn = document.querySelector('.back-to-top');
-    
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', () => {
         if (window.pageYOffset > 300) {
-            backToTopBtn.classList.add('visible');
+            botaoTopo.classList.add('visible');
         } else {
-            backToTopBtn.classList.remove('visible');
+            botaoTopo.classList.remove('visible');
         }
     });
     
-    backToTopBtn.addEventListener('click', function() {
+    botaoTopo.addEventListener('click', () => {
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
         });
     });
-    
-    // Inicializar efeitos de inclinação
-    window.tiltManager.init();
-});
+}
+
+function inicializarEfeitosInclinacao() {
+    if (window.tiltManager && typeof window.tiltManager.init === 'function') {
+        window.tiltManager.init();
+    }
+}
 
 // Gerenciador de efeitos de inclinação para reinicialização do VanillaTilt
 window.tiltManager = {
-    init: function() {
-        if (typeof VanillaTilt !== 'undefined') {
-            VanillaTilt.init(document.querySelectorAll(".skill-card, .project-card:not(.hide-project), .certificate-card:not(.hide-certificate)"), {
-                max: 5,
-                speed: 300,
-                glare: true,
-                "max-glare": 0.1
-            });
-        }
+    init() {
+        if (!this.verificarVanillaTilt()) return;
+        
+        const seletores = ".skill-card, .project-card:not(.hide-project), .certificate-card:not(.hide-certificate)";
+        const elementos = document.querySelectorAll(seletores);
+        
+        if (elementos.length === 0) return;
+        
+        VanillaTilt.init(elementos, this.obterOpcoesTilt());
     },
     
-    reinitForVisible: function(selector) {
-        if (typeof VanillaTilt !== 'undefined') {
-            // Remover inclinação de todos os elementos
-            const elements = document.querySelectorAll(selector.split(':')[0]);
-            elements.forEach(el => {
-                if (el.vanillaTilt) {
-                    el.vanillaTilt.destroy();
-                }
-            });
-            
-            // Reinicializar apenas para elementos visíveis
-            VanillaTilt.init(document.querySelectorAll(selector), {
-                max: 5,
-                speed: 300,
-                glare: true,
-                "max-glare": 0.1
-            });
-        }
+    reinitForVisible(seletor) {
+        if (!this.verificarVanillaTilt() || !seletor) return;
+        
+        // Remover inclinação de todos os elementos
+        const seletorBase = seletor.split(':')[0];
+        const todosElementos = document.querySelectorAll(seletorBase);
+        
+        todosElementos.forEach(elemento => {
+            if (elemento.vanillaTilt) {
+                elemento.vanillaTilt.destroy();
+            }
+        });
+        
+        // Reinicializar apenas para elementos visíveis
+        const elementosVisiveis = document.querySelectorAll(seletor);
+        if (elementosVisiveis.length === 0) return;
+        
+        VanillaTilt.init(elementosVisiveis, this.obterOpcoesTilt());
+    },
+    
+    verificarVanillaTilt() {
+        return typeof VanillaTilt !== 'undefined';
+    },
+    
+    obterOpcoesTilt() {
+        return {
+            max: 5,
+            speed: 300,
+            glare: true,
+            "max-glare": 0.1
+        };
     }
 };

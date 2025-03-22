@@ -3,15 +3,117 @@
  * Gerencia a visualização de certificados em um modal
  */
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Referenciar todos os botões de certificado
-    const certificateButtons = document.querySelectorAll('.certificate-btn');
+document.addEventListener('DOMContentLoaded', () => {
+    const visualizadorCertificados = new VisualizadorCertificados();
+    visualizadorCertificados.inicializar();
+});
+
+class VisualizadorCertificados {
+    constructor() {
+        this.botoesCertificado = document.querySelectorAll('.certificate-btn');
+        this.modal = null;
+        this.iframe = null;
+        this.botaoAbrir = null;
+        this.botaoBaixar = null;
+    }
     
-    // Criar um modal para visualização de certificados
-    const createCertificateModal = () => {
-        const modal = document.createElement('div');
-        modal.className = 'certificate-modal';
-        modal.innerHTML = `
+    inicializar() {
+        if (this.botoesCertificado.length === 0) return;
+        
+        this.criarModal();
+        this.atribuirReferencias();
+        this.configurarEventos();
+    }
+    
+    criarModal() {
+        // Criação do elemento modal
+        this.modal = document.createElement('div');
+        this.modal.className = 'certificate-modal';
+        this.modal.innerHTML = this.obterConteudoHTML();
+        
+        // Adição do modal ao documento
+        document.body.appendChild(this.modal);
+        
+        // Adição de estilos ao documento
+        this.adicionarEstilos();
+    }
+    
+    atribuirReferencias() {
+        this.iframe = this.modal.querySelector('iframe');
+        this.botaoAbrir = this.modal.querySelector('.open-pdf-btn');
+        this.botaoBaixar = this.modal.querySelector('.download-pdf-btn');
+    }
+    
+    configurarEventos() {
+        // Configurar fechamento do modal
+        const botaoFechar = this.modal.querySelector('.close-certificate-modal');
+        
+        botaoFechar.addEventListener('click', () => this.fecharModal());
+        
+        window.addEventListener('click', (evento) => {
+            if (evento.target === this.modal) {
+                this.fecharModal();
+            }
+        });
+        
+        // Configurar abertura do modal pelos botões de certificado
+        this.botoesCertificado.forEach(botao => {
+            botao.addEventListener('click', (e) => this.abrirModal(e, botao));
+        });
+    }
+    
+    abrirModal(evento, botao) {
+        evento.preventDefault();
+        
+        const caminhoArquivo = botao.getAttribute('href');
+        if (!caminhoArquivo) return;
+        
+        // Atualizar fonte do iframe e links
+        this.iframe.src = caminhoArquivo;
+        this.botaoAbrir.href = caminhoArquivo;
+        this.botaoBaixar.href = caminhoArquivo;
+        
+        // Mostrar modal
+        this.modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+        
+        // Atualizar traduções se disponível
+        this.atualizarTraducoes();
+    }
+    
+    fecharModal() {
+        this.modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+        
+        // Corrigir textos do filtro após fechar
+        if (window.fixCertificateFilterTexts) {
+            setTimeout(() => window.fixCertificateFilterTexts(), 100);
+        }
+    }
+    
+    atualizarTraducoes() {
+        if (typeof translations !== 'undefined') {
+            // Adicionar traduções de botões
+            translations['certificate_open_new_tab'] = {
+                'pt': 'Abrir em nova aba',
+                'en': 'Open in new tab'
+            };
+            
+            translations['certificate_download'] = {
+                'pt': 'Baixar PDF',
+                'en': 'Download PDF'
+            };
+            
+            // Atualizar idioma se houver função disponível
+            const idiomaAtual = localStorage.getItem('language') || 'pt';
+            if (typeof changeLanguage === 'function') {
+                changeLanguage(idiomaAtual);
+            }
+        }
+    }
+    
+    obterConteudoHTML() {
+        return `
             <div class="certificate-modal-content">
                 <span class="close-certificate-modal">&times;</span>
                 <div class="certificate-preview">
@@ -29,11 +131,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             </div>
         `;
-        document.body.appendChild(modal);
-        
-        // Estilo para o modal
-        const style = document.createElement('style');
-        style.textContent = `
+    }
+    
+    adicionarEstilos() {
+        const estilos = document.createElement('style');
+        estilos.textContent = this.obterEstilosCSS();
+        document.head.appendChild(estilos);
+    }
+    
+    obterEstilosCSS() {
+        return `
             .certificate-modal {
                 display: none;
                 position: fixed;
@@ -106,76 +213,5 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         `;
-        document.head.appendChild(style);
-        
-        // Adicionar funcionalidade ao modal
-        const closeBtn = modal.querySelector('.close-certificate-modal');
-        closeBtn.onclick = function() {
-            modal.style.display = "none";
-            document.body.style.overflow = "auto";
-            
-            // Corrigir textos do filtro de certificados após fechar o modal
-            if (window.fixCertificateFilterTexts) {
-                setTimeout(() => window.fixCertificateFilterTexts(), 100);
-            }
-        };
-        
-        window.addEventListener('click', function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-                document.body.style.overflow = "auto";
-                
-                // Corrigir textos do filtro de certificados após fechar o modal
-                if (window.fixCertificateFilterTexts) {
-                    setTimeout(() => window.fixCertificateFilterTexts(), 100);
-                }
-            }
-        });
-        
-        return modal;
-    };
-    
-    // Criar o modal uma vez
-    const certificateModal = createCertificateModal();
-    const modalIframe = certificateModal.querySelector('iframe');
-    const openPdfBtn = certificateModal.querySelector('.open-pdf-btn');
-    const downloadBtn = certificateModal.querySelector('.download-pdf-btn');
-    
-    // Adicionar evento de clique a todos os botões de certificado
-    certificateButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const pdfPath = this.getAttribute('href');
-            
-            if (pdfPath) {
-                // Atualizar fonte do iframe e links dos botões
-                modalIframe.src = pdfPath;
-                openPdfBtn.href = pdfPath;
-                downloadBtn.href = pdfPath;
-                
-                // Mostrar modal
-                certificateModal.style.display = "block";
-                document.body.style.overflow = "hidden";
-                
-                // Adicionar às traduções se o recurso de idioma for usado
-                if (typeof translations !== 'undefined') {
-                    translations['certificate_open_new_tab'] = {
-                        'pt': 'Abrir em nova aba',
-                        'en': 'Open in new tab'
-                    };
-                    translations['certificate_download'] = {
-                        'pt': 'Baixar PDF',
-                        'en': 'Download PDF'
-                    };
-                    
-                    // Atualizar idioma se houver um idioma ativo
-                    const currentLang = localStorage.getItem('language') || 'pt';
-                    if (typeof changeLanguage === 'function') {
-                        changeLanguage(currentLang);
-                    }
-                }
-            }
-        });
-    });
-});
+    }
+}

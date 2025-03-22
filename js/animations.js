@@ -3,33 +3,24 @@
  * Gerencia animações das barras de habilidades e contadores
  */
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Animação das barras de habilidades com inicialização confiável
-    function animateSkillBars() {
-        console.log("Animando barras de habilidades...");
-        const progressBars = document.querySelectorAll('.progress');
-        
-        progressBars.forEach(bar => {
-            // Definir largura padrão se data-width estiver ausente
-            const width = bar.getAttribute('data-width') || '80%';
-            
-            // Forçar um reflow antes de definir a largura para melhor animação
-            bar.style.width = '0%';
-            
-            // Definir um timeout para garantir que a animação aconteça
-            setTimeout(() => {
-                bar.style.width = width;
-                console.log(`Largura da barra de progresso definida para ${width}`);
-            }, 50);
-        });
-    }
+document.addEventListener('DOMContentLoaded', () => {
+    // Inicializar barras de habilidades
+    const configBarrasHabilidades = new ConfiguradorBarrasHabilidades();
+    configBarrasHabilidades.configurar();
     
-    // Inicializar barras de progresso com valores padrão se ausentes
-    function initializeProgressBars() {
-        const skillItems = document.querySelectorAll('.skill-card .progress-item');
-        
-        // Níveis de habilidade padrão - ajuste conforme necessário
-        const defaultSkills = {
+    // Inicializar contadores
+    const configContadores = new ConfiguradorContadores();
+    configContadores.configurar();
+    
+    // Inicializar efeitos de inclinação
+    inicializarGerenciadorInclinacao();
+});
+
+class ConfiguradorBarrasHabilidades {
+    constructor() {
+        this.secaoHabilidades = document.querySelector('.skills');
+        this.foiAnimado = false;
+        this.nivelPadrao = {
             'HTML5': '90%',
             'CSS3 & Flexbox/Grid': '85%',
             'JavaScript ES6+': '80%',
@@ -43,207 +34,221 @@ document.addEventListener('DOMContentLoaded', function() {
             'CI/CD': '70%',
             'Clean Code': '80%'
         };
+    }
+    
+    configurar() {
+        if (!this.secaoHabilidades) return;
         
-        skillItems.forEach(item => {
-            const skillName = item.querySelector('.skill-name').textContent.trim();
-            const progressBar = item.querySelector('.progress');
+        this.inicializarBarrasProgresso();
+        this.configurarDeteccaoVisibilidade();
+    }
+    
+    inicializarBarrasProgresso() {
+        const itensHabilidade = document.querySelectorAll('.skill-card .progress-item');
+        
+        itensHabilidade.forEach(item => {
+            const nomeHabilidade = item.querySelector('.skill-name').textContent.trim();
+            const barraProgresso = item.querySelector('.progress');
             
-            if (!progressBar.getAttribute('data-width')) {
-                const defaultWidth = defaultSkills[skillName] || '75%';
-                progressBar.setAttribute('data-width', defaultWidth);
-                console.log(`Largura padrão definida para ${skillName}: ${defaultWidth}`);
+            if (!barraProgresso) return;
+            
+            if (!barraProgresso.getAttribute('data-width')) {
+                const larguraPadrao = this.nivelPadrao[nomeHabilidade] || '75%';
+                barraProgresso.setAttribute('data-width', larguraPadrao);
             }
             
             // Criar div de progresso se não existir
-            if (!progressBar.querySelector('.progress')) {
-                const progressDiv = document.createElement('div');
-                progressDiv.className = 'progress';
-                progressDiv.setAttribute('data-width', progressBar.getAttribute('data-width'));
-                progressBar.appendChild(progressDiv);
+            if (!barraProgresso.querySelector('.progress')) {
+                const divProgresso = document.createElement('div');
+                divProgresso.className = 'progress';
+                divProgresso.setAttribute('data-width', barraProgresso.getAttribute('data-width'));
+                barraProgresso.appendChild(divProgresso);
             }
         });
     }
     
-    // Gatilho de animação mais confiável que funciona em todos os dispositivos
-    function setupSkillAnimations() {
-        const skillSection = document.querySelector('.skills');
+    configurarDeteccaoVisibilidade() {
+        // Método 1: Observer de Interseção (browsers modernos)
+        this.configurarObserver();
         
-        if (!skillSection) return;
+        // Método 2: Evento de rolagem (fallback)
+        this.configurarEventoRolagem();
         
-        // Inicializar barras de progresso primeiro
-        initializeProgressBars();
-        
-        // Múltiplos métodos para garantir que a animação seja acionada corretamente
-        
-        // Método 1: Intersection Observer com threshold menor
+        // Método 3: Timeout garantido
+        this.configurarTimeout();
+    }
+    
+    configurarObserver() {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateSkillBars();
+                if (entry.isIntersecting && !this.foiAnimado) {
+                    this.animarBarrasHabilidades();
+                    this.foiAnimado = true;
                     observer.unobserve(entry.target);
-                    console.log("Animação acionada via Intersection Observer");
                 }
             });
-        }, { threshold: 0.1 }); // Threshold menor para melhor detecção em dispositivos móveis
+        }, { threshold: 0.1 });
         
-        observer.observe(skillSection);
-        
-        // Método 2: Evento de rolagem como backup para navegadores mais antigos
-        let animated = false;
-        window.addEventListener('scroll', function() {
-            if (animated) return;
+        observer.observe(this.secaoHabilidades);
+    }
+    
+    configurarEventoRolagem() {
+        window.addEventListener('scroll', () => {
+            if (this.foiAnimado) return;
             
-            const rect = skillSection.getBoundingClientRect();
-            const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+            const rect = this.secaoHabilidades.getBoundingClientRect();
+            const alturaJanela = window.innerHeight || document.documentElement.clientHeight;
             
-            if (rect.top <= windowHeight * 0.75) {
-                animateSkillBars();
-                animated = true;
-                console.log("Animação acionada via evento de rolagem");
+            if (rect.top <= alturaJanela * 0.75) {
+                this.animarBarrasHabilidades();
+                this.foiAnimado = true;
             }
         });
-        
-        // Método 3: Acionamento garantido após o carregamento da página
+    }
+    
+    configurarTimeout() {
         setTimeout(() => {
-            if (!animated) {
-                animateSkillBars();
-                animated = true;
-                console.log("Animação acionada via timeout");
+            if (!this.foiAnimado) {
+                this.animarBarrasHabilidades();
+                this.foiAnimado = true;
             }
         }, 2000);
     }
     
-    // Chamar a função de configuração
-    setupSkillAnimations();
+    animarBarrasHabilidades() {
+        const barrasProgresso = document.querySelectorAll('.progress');
+        
+        barrasProgresso.forEach(barra => {
+            const largura = barra.getAttribute('data-width') || '80%';
+            
+            // Forçar reflow para garantir animação
+            barra.style.width = '0%';
+            
+            setTimeout(() => {
+                barra.style.width = largura;
+            }, 50);
+        });
+    }
+}
+
+class ConfiguradorContadores {
+    constructor() {
+        this.secaoEstatisticas = document.querySelector('.stats');
+    }
     
-    // Animação de contadores
-    function animateCounters() {
-        document.querySelectorAll('.stat-number').forEach(counter => {
-            const target = parseInt(counter.getAttribute('data-count'));
-            const duration = 2000; // ms
-            const step = target / duration * 10;
-            let current = 0;
+    configurar() {
+        if (!this.secaoEstatisticas) return;
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    this.animarContadores();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        
+        observer.observe(this.secaoEstatisticas);
+    }
+    
+    animarContadores() {
+        document.querySelectorAll('.stat-number').forEach(contador => {
+            const valorAlvo = parseInt(contador.getAttribute('data-count'));
+            const duracao = 2000; // ms
+            const incremento = valorAlvo / duracao * 10;
+            let valorAtual = 0;
             
             const timer = setInterval(() => {
-                current += step;
-                counter.textContent = Math.floor(current);
+                valorAtual += incremento;
+                contador.textContent = Math.floor(valorAtual);
                 
-                if (current >= target) {
-                    counter.textContent = target;
+                if (valorAtual >= valorAlvo) {
+                    contador.textContent = valorAlvo;
                     clearInterval(timer);
                 }
             }, 10);
         });
     }
+}
 
-    // Animar contadores quando a seção de estatísticas estiver visível
-    const statsSection = document.querySelector('.stats');
-    
-    if (statsSection) {
-        const statsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCounters();
-                    statsObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.3 });
-        
-        statsObserver.observe(statsSection);
+function inicializarGerenciadorInclinacao() {
+    // Criação do gerenciador global apenas se não estiver definido
+    if (!window.tiltManager) {
+        window.tiltManager = criarGerenciadorInclinacao();
     }
     
-    // Inicialização do VanillaTilt para elementos da página
-    // Criar um objeto utilitário global para gerenciamento do VanillaTilt
-    window.tiltManager = {
-        // Opções padrão
-        defaultOptions: {
+    // Verificar se VanillaTilt está disponível
+    if (typeof VanillaTilt === 'undefined') return;
+    
+    // Inicializar elementos com base na página atual
+    const cardsHabilidades = document.querySelectorAll('.skill-card');
+    const cardsProjetos = document.querySelectorAll('.project-card:not(.hide-project)');
+    const cardsCertificados = document.querySelectorAll('.certificate-card:not(.hide-certificate)');
+    
+    const seletores = [];
+    
+    if (cardsHabilidades.length > 0) {
+        seletores.push('.skill-card');
+    }
+    
+    if (cardsProjetos.length > 0) {
+        seletores.push('.project-card:not(.hide-project)');
+    }
+    
+    if (seletores.length > 0) {
+        window.tiltManager.init(seletores.join(', '));
+    }
+    
+    if (cardsCertificados.length > 0) {
+        // Inicializar com delay para garantir renderização completa
+        setTimeout(() => {
+            window.tiltManager.init('.certificate-card:not(.hide-certificate)');
+        }, 100);
+    }
+}
+
+function criarGerenciadorInclinacao() {
+    return {
+        opcoesPadrao: {
             max: 5,
             speed: 300,
             glare: true,
             "max-glare": 0.1,
         },
         
-        // Inicializar VanillaTilt para elementos
-        init: function(selector, options = {}) {
-            if (typeof VanillaTilt === 'undefined') {
-                console.warn('VanillaTilt não está definido. Certifique-se de que o script está carregado.');
+        init(seletor, opcoes = {}) {
+            if (typeof VanillaTilt === 'undefined' || !seletor) {
                 return;
             }
             
-            // Verificar se o seletor está definido antes de usá-lo
-            if (!selector) {
-                console.warn('Nenhum seletor fornecido para inicialização do VanillaTilt');
-                return;
-            }
+            const elementos = document.querySelectorAll(seletor);
+            if (elementos.length === 0) return;
             
-            const elements = document.querySelectorAll(selector);
-            if (elements.length === 0) {
-                console.log(`Nenhum elemento encontrado para o seletor: ${selector}`);
-                return;
-            }
-            
-            // Combinar opções padrão com quaisquer opções passadas
-            const tiltOptions = {...this.defaultOptions, ...options};
-            
-            // Inicializar VanillaTilt
-            VanillaTilt.init(elements, tiltOptions);
-            console.log(`VanillaTilt inicializado para ${elements.length} elementos com seletor: ${selector}`);
+            const opcoesFinais = {...this.opcoesPadrao, ...opcoes};
+            VanillaTilt.init(elementos, opcoesFinais);
         },
         
-        // Reinicializar VanillaTilt após filtragem
-        reinitForVisible: function(selector, options = {}) {
-            if (typeof VanillaTilt === 'undefined') {
-                console.warn('VanillaTilt não está definido. Certifique-se de que o script está carregado.');
-                return;
-            }
+        reinitForVisible(seletor, opcoes = {}) {
+            if (typeof VanillaTilt === 'undefined') return;
             
             // Obter todos os elementos que correspondem ao seletor
-            const elements = document.querySelectorAll(selector);
-            console.log(`Encontrados ${elements.length} elementos para reinicialização com seletor: ${selector}`);
-            
-            if (elements.length === 0) return;
+            const elementos = document.querySelectorAll(seletor);
+            if (elementos.length === 0) return;
             
             // Primeiro destruir instâncias existentes
-            elements.forEach(element => {
-                if (element.vanillaTilt) {
-                    element.vanillaTilt.destroy();
+            elementos.forEach(elemento => {
+                if (elemento.vanillaTilt) {
+                    elemento.vanillaTilt.destroy();
                 }
             });
             
             // Então reinicializar
-            const tiltOptions = {...this.defaultOptions, ...options};
+            const opcoesFinais = {...this.opcoesPadrao, ...opcoes};
             
-            // Usar um pequeno atraso para garantir que o DOM foi atualizado
+            // Usar um pequeno atraso para garantir atualização do DOM
             setTimeout(() => {
-                VanillaTilt.init(elements, tiltOptions);
-                console.log(`VanillaTilt reinicializado para ${elements.length} elementos`);
+                VanillaTilt.init(elementos, opcoesFinais);
             }, 50);
         }
     };
-    
-    // Inicializar elementos VanillaTilt apropriados com base no conteúdo da página
-    if (typeof VanillaTilt !== 'undefined') {
-        // Verificar cards de habilidades e projetos (página principal)
-        const skillCards = document.querySelectorAll('.skill-card');
-        const projectCards = document.querySelectorAll('.project-card:not(.hide-project)');
-        
-        if (skillCards.length > 0 || projectCards.length > 0) {
-            const selector = [];
-            if (skillCards.length > 0) selector.push('.skill-card');
-            if (projectCards.length > 0) selector.push('.project-card:not(.hide-project)');
-            
-            tiltManager.init(selector.join(', '));
-        }
-        
-        // Verificar cards de certificados (página de certificados)
-        const certificateCards = document.querySelectorAll('.certificate-card:not(.hide-certificate)');
-        if (certificateCards.length > 0) {
-            // Inicializar com um pequeno atraso para garantir que todos os cards foram renderizados
-            setTimeout(() => {
-                tiltManager.init('.certificate-card:not(.hide-certificate)');
-            }, 100);
-        }
-    } else {
-        console.warn('Biblioteca VanillaTilt não está carregada. Efeitos de inclinação não serão aplicados.');
-    }
-});
+}

@@ -3,49 +3,79 @@
  * Gerencia o envio do formulário com EmailJS
  */
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Inicializar EmailJS
-    if (typeof emailjs !== 'undefined') {
-        emailjs.init("RfQczQRFEdJV5YpK-");
+document.addEventListener('DOMContentLoaded', () => {
+    const gerenciadorFormulario = new GerenciadorFormularioContato();
+    gerenciadorFormulario.inicializar();
+});
+
+class GerenciadorFormularioContato {
+    constructor() {
+        this.formulario = document.getElementById('contactForm');
+        this.mensagemSucesso = document.querySelector('.success-message');
+        this.mensagemErro = document.querySelector('.error-message');
+        this.tempoExibicaoMensagem = 5000; // 5 segundos
+        this.serviceId = 'service_o7jhryx';
+        this.templateId = 'template_j65zerc';
+        this.userId = 'RfQczQRFEdJV5YpK-';
     }
     
-    const contactForm = document.getElementById('contactForm');
+    inicializar() {
+        if (!this.formulario) return;
+        
+        this.inicializarEmailJS();
+        this.configurarEnvioFormulario();
+    }
     
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            const form = this;
-            form.classList.add('submitting');
-            
-            const params = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                subject: document.getElementById('subject').value,
-                message: document.getElementById('message').value
-            };
-            
-            emailjs.send('service_o7jhryx', 'template_j65zerc', params)
-                .then(function() {
-                    form.classList.remove('submitting');
-                    document.querySelector('.success-message').style.display = 'block';
-                    document.querySelector('.error-message').style.display = 'none';
-                    
-                    form.reset();
-                    
-                    setTimeout(() => {
-                        document.querySelector('.success-message').style.display = 'none';
-                    }, 5000);
-                }, function(error) {
-                    console.error('Erro ao enviar email:', error);
-                    form.classList.remove('submitting');
-                    document.querySelector('.error-message').style.display = 'block';
-                    document.querySelector('.success-message').style.display = 'none';
-                    
-                    setTimeout(() => {
-                        document.querySelector('.error-message').style.display = 'none';
-                    }, 5000);
-                });
+    inicializarEmailJS() {
+        if (typeof emailjs !== 'undefined') {
+            emailjs.init(this.userId);
+        }
+    }
+    
+    configurarEnvioFormulario() {
+        this.formulario.addEventListener('submit', (evento) => {
+            evento.preventDefault();
+            this.enviarFormulario();
         });
     }
-});
+    
+    enviarFormulario() {
+        this.formulario.classList.add('submitting');
+        
+        const parametros = this.obterParametrosFormulario();
+        
+        emailjs.send(this.serviceId, this.templateId, parametros)
+            .then(() => this.tratarEnvioSucesso())
+            .catch(erro => this.tratarEnvioErro(erro));
+    }
+    
+    obterParametrosFormulario() {
+        return {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            subject: document.getElementById('subject').value,
+            message: document.getElementById('message').value
+        };
+    }
+    
+    tratarEnvioSucesso() {
+        this.formulario.classList.remove('submitting');
+        this.exibirMensagem(this.mensagemSucesso, this.mensagemErro);
+        this.formulario.reset();
+    }
+    
+    tratarEnvioErro(erro) {
+        console.error('Erro ao enviar email:', erro);
+        this.formulario.classList.remove('submitting');
+        this.exibirMensagem(this.mensagemErro, this.mensagemSucesso);
+    }
+    
+    exibirMensagem(mensagemMostrar, mensagemEsconder) {
+        mensagemMostrar.style.display = 'block';
+        mensagemEsconder.style.display = 'none';
+        
+        setTimeout(() => {
+            mensagemMostrar.style.display = 'none';
+        }, this.tempoExibicaoMensagem);
+    }
+}

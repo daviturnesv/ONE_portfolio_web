@@ -3,95 +3,135 @@
  * Gerencia o modal de projetos e interações
  */
 
-document.addEventListener('DOMContentLoaded', function() {
-    const projectCards = document.querySelectorAll('.project-card');
-    
-    // Criar modal se não existir
-    let projectModal = document.querySelector('.project-modal');
-    let modalBody, closeModal;
-    
-    if (!projectModal) {
-        // Criar a estrutura do modal
-        projectModal = document.createElement('div');
-        projectModal.className = 'project-modal';
-        projectModal.innerHTML = `
-            <div class="modal-content">
-                <span class="close-modal">&times;</span>
-                <div class="modal-body"></div>
-            </div>
-        `;
-        document.body.appendChild(projectModal);
+document.addEventListener('DOMContentLoaded', () => {
+    const gerenciadorProjetos = new GerenciadorProjetos();
+    gerenciadorProjetos.inicializar();
+});
+
+class GerenciadorProjetos {
+    constructor() {
+        this.cardsProjeto = document.querySelectorAll('.project-card');
+        this.modal = null;
+        this.corpoModal = null;
+        this.botaoFechar = null;
     }
     
-    // Obter referências para elementos do modal
-    modalBody = projectModal.querySelector('.modal-body');
-    closeModal = projectModal.querySelector('.close-modal');
-    
-    // Função de popup do modal
-    window.openModal = function(card) {
-        const title = card.querySelector('h3').textContent;
-        const description = card.querySelector('p').textContent;
-        const image = card.querySelector('img').getAttribute('src');
-        const techSpans = card.querySelectorAll('.project-tech span');
-        const techList = Array.from(techSpans).map(span => span.textContent);
+    inicializar() {
+        if (this.cardsProjeto.length === 0) return;
         
-        let repoLink = '';
-        const linkElem = card.querySelector('.project-links a');
-        if (linkElem) {
-            repoLink = linkElem.getAttribute('href');
+        this.criarModal();
+        this.configurarEventos();
+        
+        // Disponibilizar função global
+        window.openModal = (card) => this.abrirModal(card);
+    }
+    
+    criarModal() {
+        // Se o modal já existe, apenas obter referências
+        this.modal = document.querySelector('.project-modal');
+        
+        if (!this.modal) {
+            // Criar novo modal
+            this.modal = document.createElement('div');
+            this.modal.className = 'project-modal';
+            this.modal.innerHTML = `
+                <div class="modal-content">
+                    <span class="close-modal">&times;</span>
+                    <div class="modal-body"></div>
+                </div>
+            `;
+            document.body.appendChild(this.modal);
         }
         
-        const lang = localStorage.getItem('language') || 'pt';
-        const techTitle = (lang === 'pt') ? 'Tecnologias:' : 'Technologies:';
-        const githubText = (lang === 'pt') ? 'Ver no GitHub' : 'View on GitHub';
+        // Obter referências
+        this.corpoModal = this.modal.querySelector('.modal-body');
+        this.botaoFechar = this.modal.querySelector('.close-modal');
+    }
+    
+    configurarEventos() {
+        // Evento nos cards de projeto
+        this.cardsProjeto.forEach(card => {
+            card.addEventListener('click', (e) => this.aoClicarCard(e, card));
+        });
         
-        modalBody.innerHTML = `
-            <img src="${image}" alt="${title}">
-            <h3>${title}</h3>
-            <p>${description}</p>
+        // Evento no botão de fechar
+        if (this.botaoFechar) {
+            this.botaoFechar.addEventListener('click', () => this.fecharModal());
+        }
+        
+        // Evento de clique fora do modal
+        window.addEventListener('click', (e) => {
+            if (e.target === this.modal) {
+                this.fecharModal();
+            }
+        });
+    }
+    
+    aoClicarCard(evento, card) {
+        // Não abrir modal se clicar nos links do projeto
+        if (evento.target.closest('.project-links')) {
+            return;
+        }
+        
+        this.abrirModal(card);
+    }
+    
+    abrirModal(card) {
+        const titulo = card.querySelector('h3').textContent;
+        const descricao = card.querySelector('p').textContent;
+        const imagem = card.querySelector('img').getAttribute('src');
+        const listaTecnologias = this.obterListaTecnologias(card);
+        const linkRepositorio = this.obterLinkRepositorio(card);
+        
+        // Idioma atual
+        const idioma = localStorage.getItem('language') || 'pt';
+        const tituloTecnologias = (idioma === 'pt') ? 'Tecnologias:' : 'Technologies:';
+        const textoGithub = (idioma === 'pt') ? 'Ver no GitHub' : 'View on GitHub';
+        
+        // Atualizar conteúdo do modal
+        this.corpoModal.innerHTML = this.gerarHTMLConteudoModal(
+            imagem, titulo, descricao, tituloTecnologias, 
+            listaTecnologias, linkRepositorio, textoGithub
+        );
+        
+        // Mostrar modal
+        this.modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+    
+    fecharModal() {
+        this.modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+    
+    obterListaTecnologias(card) {
+        const elementos = card.querySelectorAll('.project-tech span');
+        return Array.from(elementos).map(span => span.textContent);
+    }
+    
+    obterLinkRepositorio(card) {
+        const linkElem = card.querySelector('.project-links a');
+        return linkElem ? linkElem.getAttribute('href') : '';
+    }
+    
+    gerarHTMLConteudoModal(imagem, titulo, descricao, tituloTecnologias, listaTecnologias, linkRepositorio, textoGithub) {
+        return `
+            <img src="${imagem}" alt="${titulo}">
+            <h3>${titulo}</h3>
+            <p>${descricao}</p>
             <div class="modal-tech-list">
-                <h4>${techTitle}</h4>
+                <h4>${tituloTecnologias}</h4>
                 <ul>
-                    ${techList.map(tech => `<li>${tech}</li>`).join('')}
+                    ${listaTecnologias.map(tech => `<li>${tech}</li>`).join('')}
                 </ul>
             </div>
-            ${repoLink ? `
+            ${linkRepositorio ? `
             <div class="modal-actions">
-                <a href="${repoLink}" target="_blank" class="btn primary-btn">
-                    <i class="fab fa-github"></i> ${githubText}
+                <a href="${linkRepositorio}" target="_blank" class="btn primary-btn">
+                    <i class="fab fa-github"></i> ${textoGithub}
                 </a>
             </div>
             ` : ''}
         `;
-        
-        projectModal.style.display = 'block';
-        document.body.style.overflow = 'hidden';
-    };
-    
-    // Adicionar evento de clique aos cards de projeto
-    projectCards.forEach(card => {
-        card.addEventListener('click', function(e) {
-            if (e.target.closest('.project-links')) {
-                return; // Não abrir modal se clicar nos links do projeto
-            }
-            
-            openModal(this);
-        });
-    });
-    
-    // Fechar modal ao clicar no botão X
-    if (closeModal) {
-        closeModal.addEventListener('click', function() {
-            projectModal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        });
     }
-    
-    // Fechar modal ao clicar fora dele
-    window.addEventListener('click', function(e) {
-        if (e.target === projectModal) {
-            projectModal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-    });
-});
+}

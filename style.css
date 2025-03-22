@@ -152,12 +152,14 @@ header {
     font-weight: 700;
     font-size: 24px;
     color: #0071e3;
+    margin-right: 20px;
 }
 
 .header-controls {
     display: flex;
     align-items: center;
     gap: 15px;
+    margin-left: 20px;
 }
 
 nav ul {
@@ -1981,5 +1983,15 @@ footer {
     .competencies-tags span {
         font-size: 12px;
         padding: 6px 14px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .logo {
+        margin-right: 10px;
+    }
+    
+    .header-controls {
+        margin-left: 10px;
     }
 }
