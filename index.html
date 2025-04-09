@@ -8,6 +8,17 @@
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+        <link rel="stylesheet" href="css/skills-section.css">
+        <meta name="description" content="Portfólio de Davi Turnes Vieira, desenvolvedor front-end especializado em criar interfaces modernas e responsivas com React, JavaScript e CSS.">
+        <meta name="keywords" content="desenvolvedor front-end, React, JavaScript, HTML, CSS, portfolio">
+        <meta name="author" content="Davi Turnes Vieira">
+        
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://meusite.com/">
+        <meta property="og:title" content="Davi Turnes Vieira | Front-end Developer">
+        <meta property="og:description" content="Desenvolvedor front-end com foco em experiência do usuário">
+        <meta property="og:image" content="https://meusite.com/assets/img/og-image.jpg">
     </head>
     <body>
         <!-- Preloader -->
@@ -34,7 +45,7 @@
                 <span></span>
             </div>
             <div class="header-controls">
-                <div class="theme-toggle">
+                <div class="theme-toggle" role="switch" aria-checked="false" aria-label="Alternar tema">
                     <i class="fas fa-moon"></i>
                     <i class="fas fa-sun"></i>
                     <div class="theme-toggle-ball"></div>
@@ -72,7 +83,7 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <img src="assets/img/Eu_no_Mine.png" alt="Davi Turnes Vieira" class="profile-image">
+                    <img src="assets/img/Eu_no_Mine.png" alt="Davi Turnes Vieira" class="profile-image" width="400" height="400" loading="eager">
                 </div>
             </section>
             
@@ -183,141 +194,13 @@
                 <div class="section-header">
                     <h2>Habilidades</h2>
                 </div>
-                <div class="skills-grid">
-                    <!-- Front-end Development Card -->
-                    <div class="skill-card">
-                        <img src="assets/img/paginas_web.webp" alt="Desenvolvimento Front-end">
-                        <h3>Desenvolvimento Front-end</h3>
-                        <p>Criação de interfaces modernas, responsivas e acessíveis com foco na experiência do usuário</p>
-                        <div class="skill-progress">
-                            <div class="progress-item">
-                                <span class="skill-name">HTML5</span>
-                                <div class="progress-bar">
-                                    <div class="progress" data-width="90%"></div>
-                                </div>
-                            </div>
-                            <div class="progress-item">
-                                <span class="skill-name">CSS3 & Flexbox/Grid</span>
-                                <div class="progress-bar">
-                                    <div class="progress" data-width="85%"></div>
-                                </div>
-                            </div>
-                            <div class="progress-item">
-                                <span class="skill-name">JavaScript ES6+</span>
-                                <div class="progress-bar">
-                                    <div class="progress" data-width="80%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="skill-tags">
-                            <span>Responsive Design</span>
-                            <span>UI/UX</span>
-                            <span>Sass/SCSS</span>
-                            <span>Bootstrap</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Web Applications Card -->
-                    <div class="skill-card">
-                        <img src="assets/img/abas_web.webp" alt="Aplicações Web">
-                        <h3>Aplicações Web</h3>
-                        <p>Desenvolvimento de aplicações web interativas com frameworks modernos e APIs</p>
-                        <div class="skill-progress">
-                            <div class="progress-item">
-                                <span class="skill-name">React.js</span>
-                                <div class="progress-bar">
-                                    <div class="progress" data-width="75%"></div>
-                                </div>
-                            </div>
-                            <div class="progress-item">
-                                <span class="skill-name">API Integration</span>
-                                <div class="progress-bar">
-                                    <div class="progress" data-width="85%"></div>
-                                </div>
-                            </div>
-                            <div class="progress-item">
-                                <span class="skill-name">Node.js</span>
-                                <div class="progress-bar">
-                                    <div class="progress" data-width="70%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="skill-tags">
-                            <span>RESTful APIs</span>
-                            <span>SPA</span>
-                            <span>Express</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Backend Development Card -->
-                    <div class="skill-card">
-                        <img src="assets/img/programacao_web.webp" alt="Desenvolvimento Backend">
-                        <h3>Desenvolvimento Backend</h3>
-                        <p>Criação de APIs robustas, integração com bancos de dados e gerenciamento de servidores</p>
-                        <div class="skill-progress">
-                            <div class="progress-item">
-                                <span class="skill-name">Java & Spring</span>
-                                <div class="progress-bar">
-                                    <div class="progress" data-width="80%"></div>
-                                </div>
-                            </div>
-                            <div class="progress-item">
-                                <span class="skill-name">Python</span>
-                                <div class="progress-bar">
-                                    <div class="progress" data-width="75%"></div>
-                                </div>
-                            </div>
-                            <div class="progress-item">
-                                <span class="skill-name">SQL/NoSQL</span>
-                                <div class="progress-bar">
-                                    <div class="progress" data-width="70%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="skill-tags">
-                            <span>C/C++</span>
-                            <span>Spring Boot</span>
-                            <span>MySQL</span>
-                            <span>MongoDB</span>
-                        </div>
-                    </div>
-                    
-                    <!-- DevOps/Tools Card -->
-                    <div class="skill-card">
-                        <img src="assets/img/DevOps.png" alt="DevOps & Ferramentas">
-                        <h3>DevOps & Ferramentas</h3>
-                        <p>Automação de processos, versionamento de código e integração/entrega contínua</p>
-                        <div class="skill-progress">
-                            <div class="progress-item">
-                                <span class="skill-name">Git/GitHub</span>
-                                <div class="progress-bar">
-                                    <div class="progress" data-width="85%"></div>
-                                </div>
-                            </div>
-                            <div class="progress-item">
-                                <span class="skill-name">CI/CD</span>
-                                <div class="progress-bar">
-                                    <div class="progress" data-width="65%"></div>
-                                </div>
-                            </div>
-                            <div class="progress-item">
-                                <span class="skill-name">Clean Code</span>
-                                <div class="progress-bar">
-                                    <div class="progress" data-width="80%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="skill-tags">
-                            <span>VS Code</span>
-                            <span>IntelliJ IDEA</span>
-                            <span>Scrum</span>
-                            <span>Postman</span>
-                            <span>Docker</span>
-                        </div>
-                    </div>
+                <div id="skills-root"></div>
+                <div id="skills-debug" style="display:none; text-align:center; margin-top:20px; padding:15px; background-color:#f8d7da; color:#721c24; border-radius:8px;">
+                    <h3>Informações de Depuração</h3>
+                    <p>Se está vendo esta mensagem, habilite o console do navegador (F12) e verifique os erros</p>
                 </div>
             </section>
-            
+
             <!-- Seção Projetos -->
             <section id="projects" class="projects">
                 <div class="section-header">
@@ -566,6 +449,26 @@
         <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
         <script src="https://unpkg.com/vanilla-tilt@1.7.0/dist/vanilla-tilt.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+        <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+        <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+        <!-- Script para verificação do React antes dos outros scripts -->
+        <script>
+            // Checagem de segurança para React
+            setTimeout(function() {
+                const skillsRoot = document.getElementById('skills-root');
+                const skillsDebug = document.getElementById('skills-debug');
+                
+                if (skillsRoot && skillsRoot.children.length === 0) {
+                    console.error("⚠️ O componente de habilidades não foi renderizado após 5 segundos");
+                    if (skillsDebug) {
+                        skillsDebug.style.display = 'block';
+                        skillsDebug.innerHTML = '<h3>Problema na Renderização</h3><p>As habilidades não foram carregadas corretamente. Verifique o console para mais detalhes.</p>';
+                    }
+                }
+            }, 5000); // Aumentado para 5 segundos
+        </script>
 
         <!-- Inicialização AOS -->
         <script>
@@ -581,8 +484,12 @@
         <script src="js/navigation.js"></script>
         <script src="js/ui-effects.js"></script>
         <script src="js/filters.js"></script>
+        <script src="js/skills-data.js"></script>
+        <script src="js/skills-component.js" type="text/babel"></script>
+        <script src="js/skills-animations.js"></script>
         <script src="js/projects.js"></script>
         <script src="js/i18n.js"></script>
         <script src="js/contact-form.js"></script>
+
     </body>
 </html>

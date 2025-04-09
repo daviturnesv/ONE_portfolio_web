@@ -1,0 +1,111 @@
+.skills-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.skills-categories {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.category-btn {
+    padding: 10px 20px;
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.category-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 113, 227, 0.3);
+}
+
+.loading-spinner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+    animation: fadeIn 0.3s ease;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(0, 113, 227, 0.3);
+    border-radius: 50%;
+    border-top-color: var(--primary-color);
+    animation: spin 1s ease-in-out infinite;
+    margin-bottom: 10px;
+}
+
+.skill-card.loading {
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.skill-card.loaded {
+    opacity: 1;
+    animation: fadeIn 0.5s ease;
+}
+
+.skill-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.expand-icon {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.skill-details {
+    background-color: var(--bg-color);
+    padding: 15px;
+    border-radius: 8px;
+    margin: 10px 0;
+    border-left: 3px solid var(--primary-color);
+    animation: slideDown 0.3s ease;
+}
+
+.skill-resources ul {
+    text-align: left;
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+.skills-footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 15px;
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    font-size: 14px;
+    color: var(--primary-color);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideDown {
+    from { 
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

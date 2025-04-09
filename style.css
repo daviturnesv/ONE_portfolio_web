@@ -1722,6 +1722,81 @@ footer {
     color: #0a84ff;
 }
 
+/* Estilos para o React Showcase */
+.react-demo {
+    padding: 80px 0;
+    background-color: var(--bg-color-alt);
+}
+
+.react-showcase {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.skill-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.skill-tab {
+    padding: 10px 16px;
+    background: var(--bg-color);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.skill-tab.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+.skill-content {
+    padding: 20px;
+    background: var(--bg-color);
+    border-radius: 8px;
+}
+
+.skill-level {
+    margin: 20px 0;
+}
+
+.level-bar {
+    height: 10px;
+    background: var(--bg-color-alt);
+    border-radius: 5px;
+    margin: 10px 0;
+    overflow: hidden;
+}
+
+.level-fill {
+    height: 100%;
+    transition: width 0.5s ease-out;
+}
+
+.level-percentage {
+    text-align: right;
+    font-weight: bold;
+}
+
+.skill-examples {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
 /* Animações */
 @keyframes fadeIn {
     from {
