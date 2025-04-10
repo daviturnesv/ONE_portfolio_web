@@ -1,0 +1,130 @@
+/**
+ * Correções de espaçamento
+ * Este arquivo adiciona ajustes de espaçamento para melhorar a legibilidade e diagramação
+ */
+
+/* Espaçamento geral de texto */
+p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+/* Espaçamento entre seções */
+.main-section {
+    margin-bottom: 50px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(var(--accent-rgb), 0.1);
+}
+
+/* Espaçamento de títulos */
+h1 {
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+h2 {
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+h3 {
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+/* Espaçamento para listas */
+.sidebar-list {
+    margin: 10px 0;
+}
+
+.sidebar-list li {
+    margin-bottom: 8px;
+}
+
+/* Ajustes para estatísticas */
+.stats-container {
+    margin: 30px 0;
+}
+
+.stat-item {
+    margin-bottom: 15px;
+}
+
+/* Ajustes para projetos */
+.project-card {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+}
+
+.project-card h3 {
+    margin-top: 15px;
+}
+
+.project-card p {
+    margin-bottom: 15px;
+}
+
+.project-tech {
+    margin-bottom: 15px;
+}
+
+/* Espaçamento para competências */
+.competencies-group {
+    margin-bottom: 25px;
+}
+
+.competencies-group h3 {
+    margin-bottom: 10px;
+}
+
+/* Espaçamento para formulário */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-row {
+    margin-bottom: 20px;
+}
+
+/* Ajuste do grid principal para reduzir espaçamento horizontal */
+body {
+    grid-gap: 0 5px; /* Espaçamento horizontal mínimo entre colunas */
+    grid-template-columns: 250px 1fr; /* Sidebar fixa e conteúdo flexível */
+    grid-gap: 0; /* Remover espaço entre colunas */
+}
+
+main {
+    padding: 90px 20px 30px;
+    margin-right: 0; /* Elimina margem direita excessiva */
+    margin-left: 0 !important; /* Forçar remoção de margem esquerda */
+    margin-right: 0 !important; /* Garantir equilíbrio */
+    padding-left: 20px; /* Padding adequado */
+    padding-right: 20px;
+}
+
+/* Grid mais eficiente para os projetos */
+.project-grid {
+    gap: 20px;
+}
+
+/* Ajustar sidebar para não criar espaço extra */
+aside {
+    width: 250px;
+    position: fixed;
+    left: 0;
+}
+
+/* Fixar posicionamento do main de acordo com a sidebar */
+@media screen and (min-width: 768px) {
+    main {
+        margin-left: 250px; /* Alinhar com a largura da sidebar */
+        width: calc(100% - 250px); /* Ocupar resto da largura */
+    }
+}
+
+@media screen and (max-width: 767px) {
+    main {
+        margin-left: 0;
+        width: 100%;
+    }
+}

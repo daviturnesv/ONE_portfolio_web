@@ -11,21 +11,25 @@ document.addEventListener('DOMContentLoaded', () => {
 class GerenciadorNavegacao {
     constructor() {
         this.botaoMenuMobile = document.querySelector('.mobile-menu-button');
-        this.menuNavegacao = document.querySelector('nav ul');
-        this.linksNavegacao = document.querySelectorAll('nav ul li a');
-        this.secoes = document.querySelectorAll('section');
+        this.menuNavegacao = document.querySelector('nav');
+        this.linksNavegacao = document.querySelectorAll('nav menu li a');
+        this.secoes = document.querySelectorAll('main section');
         this.tamanhoDaTela = {
-            mobile: 768
+            mobile: 767
         };
     }
     
     inicializar() {
         this.configurarMenuMobile();
         this.configurarDestaqueMenu();
+        this.configurarNavegacaoSuave();
     }
     
     configurarMenuMobile() {
-        if (!this.botaoMenuMobile || !this.menuNavegacao) return;
+        if (!this.botaoMenuMobile) {
+            console.warn('Botão de menu mobile não encontrado.');
+            return;
+        }
         
         // Alternar menu ao clicar no botão
         this.botaoMenuMobile.addEventListener('click', () => this.alternarMenuMobile());
@@ -34,35 +38,67 @@ class GerenciadorNavegacao {
         this.linksNavegacao.forEach(link => {
             link.addEventListener('click', () => this.fecharMenuMobileSeNecessario());
         });
+        
+        // Fechar menu ao redimensionar a janela para desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > this.tamanhoDaTela.mobile) {
+                this.fecharMenuMobileSeNecessario();
+            }
+        });
     }
     
     alternarMenuMobile() {
-        this.menuNavegacao.classList.toggle('show');
         this.botaoMenuMobile.classList.toggle('active');
+        this.menuNavegacao.classList.toggle('active');
         document.body.classList.toggle('menu-open');
     }
     
     fecharMenuMobileSeNecessario() {
-        if (window.innerWidth <= this.tamanhoDaTela.mobile) {
-            this.menuNavegacao.classList.remove('show');
-            this.botaoMenuMobile.classList.remove('active');
-            document.body.classList.remove('menu-open');
-        }
+        this.botaoMenuMobile.classList.remove('active');
+        this.menuNavegacao.classList.remove('active');
+        document.body.classList.remove('menu-open');
     }
     
     configurarDestaqueMenu() {
         window.addEventListener('scroll', () => this.destacarMenuAtual());
+        // Também destacar no carregamento inicial
+        this.destacarMenuAtual();
+    }
+    
+    configurarNavegacaoSuave() {
+        this.linksNavegacao.forEach(link => {
+            link.addEventListener('click', (e) => {
+                // Se é um link interno
+                if (link.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        const headerHeight = document.querySelector('header').offsetHeight;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
     }
     
     destacarMenuAtual() {
         let secaoAtual = '';
-        const offsetDestaque = 200;
+        const scrollPos = window.pageYOffset;
+        const headerHeight = document.querySelector('header').offsetHeight;
         
         // Encontrar a seção atual visível
         this.secoes.forEach(secao => {
-            const topoSecao = secao.offsetTop;
+            const secaoTop = secao.offsetTop - headerHeight - 10;
+            const secaoAltura = secao.offsetHeight;
             
-            if (window.pageYOffset >= topoSecao - offsetDestaque) {
+            if (scrollPos >= secaoTop && scrollPos < secaoTop + secaoAltura) {
                 secaoAtual = secao.getAttribute('id');
             }
         });
@@ -72,7 +108,7 @@ class GerenciadorNavegacao {
             link.classList.remove('active');
             
             const href = link.getAttribute('href');
-            if (href.startsWith('#') && href.substring(1) === secaoAtual) {
+            if (href && href.startsWith('#') && href.substring(1) === secaoAtual) {
                 link.classList.add('active');
             }
         });

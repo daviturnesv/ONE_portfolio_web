@@ -1,0 +1,43 @@
+# Ignorar a pasta do portfólio de exemplo
+exemplo-pagina-pessoal/
+
+# Dependências
+node_modules/
+package-lock.json
+yarn.lock
+
+# Arquivos de ambiente
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Arquivos de IDE/editores
+.vscode/
+.idea/
+*.sublime-*
+*.swp
+*.swo
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+
+# Arquivos de log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs/
+*.log
+
+# Arquivos de build/produção
+dist/
+build/
+coverage/
+out/
+.next/
+.cache/
+
+# Outros
+.tmp/

@@ -1,0 +1,51 @@
+/**
+ * Estilos alternativos para habilidades caso o componente React falhe
+ */
+
+.skills-fallback {
+    display: none;
+    margin-top: 20px;
+}
+
+/* Mostrar o fallback apenas quando houver erro no componente principal */
+#skills-debug:not([style*="display: none"]) + .skills-fallback {
+    display: block;
+}
+
+.skills-fallback-group {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: var(--card-shadow);
+}
+
+.skills-fallback-group h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--accent-color);
+    font-size: 1.3rem;
+}
+
+.skills-fallback-item {
+    margin-bottom: 12px;
+}
+
+.skills-fallback-name {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.skills-fallback-bar {
+    height: 10px;
+    background-color: #eee;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.skills-fallback-progress {
+    height: 100%;
+    background-color: var(--accent-color);
+    border-radius: 5px;
+}

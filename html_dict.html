@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dicionário HTML | Davi Turnes Vieira</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
+    <style>
+        .html-dict {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .dict-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: var(--card-bg);
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .dict-item h2 {
+            margin-top: 0;
+            color: var(--accent-color);
+            font-family: monospace;
+            font-size: 1.2rem;
+        }
+        
+        .dict-item p {
+            margin: 10px 0 0;
+        }
+        
+        .dict-item .example {
+            background-color: var(--code-bg);
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">DTVCode</div>
+        <div class="header-controls">
+            <div class="theme-toggle" role="switch" aria-checked="false" aria-label="Alternar tema">
+                <i class="fas fa-moon"></i>
+                <i class="fas fa-sun"></i>
+                <div class="theme-toggle-ball"></div>
+            </div>
+        </div>
+    </header>
+    
+    <aside>
+        <h1>Davi Turnes Vieira</h1>
+        
+        <div class="blured-box">
+            <img width="150px" src="assets/img/Eu_no_Mine.png" alt="Davi Turnes Vieira">
+        </div>
+        
+        <p>Desenvolvedor Front-end especializado em criar interfaces modernas e responsivas.</p>
+        <p>Estudante de <a href="https://sistemas.ufsc.br/" target="_blank">Sistemas de Informação (SIN)</a> na UFSC.</p>
+    </aside>
+    
+    <main>
+        <section class="html-dict">
+            <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Voltar para a página inicial</a>
+            
+            <h1>Dicionário de Elementos HTML</h1>
+            <p>Este é um guia das tags HTML utilizadas na construção deste site.</p>
+            
+            <div class="dict-item">
+                <h2>&lt;!DOCTYPE html&gt;</h2>
+                <p>Declaração que define o tipo de documento como HTML5. Não é uma tag HTML, mas uma instrução para o navegador sobre qual versão do HTML está sendo usada.</p>
+                <div class="example">&lt;!DOCTYPE html&gt;</div>
+            </div>
+            
+            <div class="dict-item">
+                <h2>&lt;html&gt;</h2>
+                <p>Elemento raiz de um documento HTML. Todos os outros elementos devem ser descendentes deste elemento.</p>
+                <div class="example">&lt;html lang="pt-BR"&gt;...&lt;/html&gt;</div>
+            </div>
+            
+            <div class="dict-item">
+                <h2>&lt;head&gt;</h2>
+                <p>Contém metadados e informações sobre o documento HTML, como título, links para estilos, scripts e metadados.</p>
+                <div class="example">&lt;head&gt;...&lt;/head&gt;</div>
+            </div>
+            
+            <div class="dict-item">
+                <h2>&lt;body&gt;</h2>
+                <p>Contém o conteúdo visível do documento HTML, incluindo texto, imagens, links e outros elementos.</p>
+                <div class="example">&lt;body&gt;...&lt;/body&gt;</div>
+            </div>
+            
+            <div class="dict-item">
+                <h2>&lt;header&gt;</h2>
+                <p>Representa um contêiner para conteúdo introdutório ou um conjunto de links de navegação. Geralmente contém o cabeçalho da página, logo e menu de navegação.</p>
+                <div class="example">&lt;header&gt;...&lt;/header&gt;</div>
+            </div>
+            
+            <div class="dict-item">
+                <h2>&lt;nav&gt;</h2>
+                <p>Define uma seção de navegação. Usado para criar menus de navegação com links para outras páginas ou seções do site.</p>
+                <div class="example">&lt;nav&gt;...&lt;/nav&gt;</div>
+            </div>
+            
+            <div class="dict-item">
+                <h2>&lt;main&gt;</h2>
+                <p>Especifica o conteúdo principal do documento. Deve ser único no documento e não deve conter conteúdos repetidos como cabeçalhos, rodapés ou barras laterais.</p>
+                <div class="example">&lt;main&gt;...&lt;/main&gt;</div>
+            </div>
+            
+            <div class="dict-item">
+                <h2>&lt;section&gt;</h2>
+                <p>Define uma seção em um documento, como capítulos, cabeçalhos ou quaisquer áreas independentes de conteúdo.</p>
+                <div class="example">&lt;section&gt;...&lt;/section&gt;</div>
+            </div>
+            
+            <div class="dict-item">
+                <h2>&lt;aside&gt;</h2>
+                <p>Define um conteúdo relacionado mas separado do conteúdo principal. É geralmente representado como uma barra lateral.</p>
+                <div class="example">&lt;aside&gt;...&lt;/aside&gt;</div>
+            </div>
+            
+            <div class="dict-item">
+                <h2>&lt;footer&gt;</h2>
+                <p>Define um rodapé para um documento ou seção. Geralmente contém informações de autoria, direitos autorais, links de contato e navegação secundária.</p>
+                <div class="example">&lt;footer&gt;...&lt;/footer&gt;</div>
+            </div>
+            
+            <div class="dict-item">
+                <h2>&lt;h1&gt;, &lt;h2&gt;, &lt;h3&gt;, &lt;h4&gt;, &lt;h5&gt;, &lt;h6&gt;</h2>
+                <p>Tags de cabeçalho que definem títulos e subtítulos. H1 é o mais importante, e H6 o menos importante.</p>
+                <div class="example">&lt;h1&gt;Título Principal&lt;/h1&gt;<br>&lt;h2&gt;Subtítulo&lt;/h2&gt;</div>
+            </div>
+            
+            <div class="dict-item">
+                <h2>&lt;p&gt;</h2>
+                <p>Define um parágrafo de texto.</p>
+                <div class="example">&lt;p&gt;Este é um parágrafo.&lt;/p&gt;</div>
+            </div>
+            
+            <div class="dict-item">
+                <h2>&lt;a&gt;</h2>
+                <p>Define um hiperlink, usado para navegar entre páginas.</p>
+                <div class="example">&lt;a href="https://www.exemplo.com"&gt;Link para exemplo&lt;/a&gt;</div>
+            </div>
+            
+            <div class="dict-item">
+                <h2>&lt;img&gt;</h2>
+                <p>Insere uma imagem no documento.</p>
+                <div class="example">&lt;img src="imagem.jpg" alt="Descrição da imagem"&gt;</div>
+            </div>
+            
+            <div class="dict-item">
+                <h2>&lt;ul&gt;</h2>
+                <p>Define uma lista não ordenada (com marcadores).</p>
+                <div class="example">&lt;ul&gt;<br>  &lt;li&gt;Item 1&lt;/li&gt;<br>  &lt;li&gt;Item 2&lt;/li&gt;<br>&lt;/ul&gt;</div>
+            </div>
+            
+            <div class="dict-item">
+                <h2>&lt;li&gt;</h2>
+                <p>Define um item de lista, usado dentro de elementos &lt;ul&gt; ou &lt;ol&gt;.</p>
+                <div class="example">&lt;li&gt;Item da lista&lt;/li&gt;</div>
+            </div>
+            
+            <div class="dict-item">
+                <h2>&lt;div&gt;</h2>
+                <p>Define uma divisão ou seção genérica em um documento. Usado como contêiner para outros elementos HTML.</p>
+                <div class="example">&lt;div&gt;...&lt;/div&gt;</div>
+            </div>
+            
+            <div class="dict-item">
+                <h2>&lt;span&gt;</h2>
+                <p>Define uma seção em linha em um documento, usado para agrupar elementos em nível de texto.</p>
+                <div class="example">&lt;span&gt;texto em destaque&lt;/span&gt;</div>
+            </div>
+            
+            <div class="dict-item">
+                <h2>&lt;form&gt;</h2>
+                <p>Define um formulário HTML para entrada do usuário.</p>
+                <div class="example">&lt;form&gt;...&lt;/form&gt;</div>
+            </div>
+            
+            <div class="dict-item">
+                <h2>&lt;input&gt;</h2>
+                <p>Define um campo de entrada onde o usuário pode inserir dados.</p>
+                <div class="example">&lt;input type="text" name="nome" placeholder="Digite seu nome"&gt;</div>
+            </div>
+            
+            <div class="dict-item">
+                <h2>&lt;textarea&gt;</h2>
+                <p>Define um controle de entrada de texto de várias linhas.</p>
+                <div class="example">&lt;textarea name="mensagem" rows="4" cols="50"&gt;...&lt;/textarea&gt;</div>
+            </div>
+            
+            <div class="dict-item">
+                <h2>&lt;button&gt;</h2>
+                <p>Define um botão clicável.</p>
+                <div class="example">&lt;button type="submit"&gt;Enviar&lt;/button&gt;</div>
+            </div>
+            
+            <div class="dict-item">
+                <h2>&lt;script&gt;</h2>
+                <p>Define um script do lado do cliente, geralmente JavaScript.</p>
+                <div class="example">&lt;script src="script.js"&gt;&lt;/script&gt;</div>
+            </div>
+            
+            <div class="dict-item">
+                <h2>&lt;link&gt;</h2>
+                <p>Define a relação entre um documento e um recurso externo, mais comumente usado para vincular folhas de estilo CSS.</p>
+                <div class="example">&lt;link rel="stylesheet" href="style.css"&gt;</div>
+            </div>
+            
+            <div class="dict-item">
+                <h2>&lt;meta&gt;</h2>
+                <p>Define metadados sobre um documento HTML, como descrições, palavras-chave para mecanismos de busca, autor do documento e configuração de viewport.</p>
+                <div class="example">&lt;meta name="description" content="Descrição da página"&gt;</div>
+            </div>
+            
+            <div class="dict-item">
+                <h2>&lt;address&gt;</h2>
+                <p>Define informações de contato do autor/proprietário de um documento ou artigo.</p>
+                <div class="example">&lt;address&gt;<br>  Escrito por Davi Turnes.<br>  Entre em contato: davitv.devcontato@gmail.com<br>&lt;/address&gt;</div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="news">
+            <quote>HTML: A linguagem de marcação da web</quote>
+        </div>
+        <div>
+            <p>&copy; 2025 Davi Turnes Vieira | Desenvolvedor Front-end</p>
+        </div>
+    </footer>
+    
+    <!-- Script para toggle do tema -->
+    <script src="js/theme-toggle.js"></script>
+</body>
+</html>

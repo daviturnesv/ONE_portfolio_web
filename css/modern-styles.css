@@ -1,0 +1,166 @@
+/**
+ * Estilos modernos inspirados em sites como Apple e Samsung
+ * Aplicando estética premium com espaçamento adequado e elementos refinados
+ */
+
+:root {
+    /* Cores modernas */
+    --primary-light: #0071e3;
+    --primary-dark: #0a84ff;
+    --secondary-light: #86868b;
+    --secondary-dark: #a1a1a6;
+    --gradient-blue: linear-gradient(135deg, #0071e3, #00c6fb);
+    --gradient-dark: linear-gradient(135deg, #323235, #1d1d1f);
+    
+    /* Propriedades de UI */
+    --card-radius: 16px;
+    --btn-radius: 22px;
+    --premium-shadow-light: 0 20px 40px rgba(0, 0, 0, 0.1);
+    --premium-shadow-dark: 0 20px 40px rgba(0, 0, 0, 0.25);
+    --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Tipografia premium */
+h1, h2, h3, h4, h5, h6 {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+}
+
+p, li, a {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif;
+    letter-spacing: -0.01em;
+}
+
+/* Cards modernos */
+.modern-card {
+    background-color: var(--card-bg);
+    border-radius: var(--card-radius);
+    overflow: hidden;
+    box-shadow: var(--premium-shadow-light);
+    transition: var(--transition-smooth);
+}
+
+.dark-mode .modern-card {
+    box-shadow: var(--premium-shadow-dark);
+}
+
+.modern-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* Botões estilo Apple */
+.modern-btn {
+    background-color: var(--primary-light);
+    color: white;
+    font-size: 17px;
+    font-weight: 500;
+    padding: 12px 24px;
+    border-radius: var(--btn-radius);
+    border: none;
+    transition: var(--transition-smooth);
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+    letter-spacing: -0.01em;
+}
+
+.modern-btn:hover {
+    transform: translateY(-3px);
+    background-color: var(--primary-dark);
+    box-shadow: var(--premium-shadow-light);
+}
+
+/* Imagens com efeito zoom suave */
+.modern-img {
+    overflow: hidden;
+    border-radius: var(--card-radius);
+}
+
+.modern-img img {
+    transition: transform 0.7s ease;
+    display: block;
+    width: 100%;
+}
+
+.modern-img:hover img {
+    transform: scale(1.05);
+}
+
+/* Gradientes para backgrounds */
+.gradient-bg {
+    background: var(--gradient-blue);
+    color: white;
+}
+
+.dark-mode .gradient-bg {
+    background: var(--gradient-dark);
+}
+
+/* Grade de elementos com espaçamento adequado */
+.modern-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+    .modern-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+}
+
+/* Cabeçalhos de seções estilizados */
+.section-header {
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.section-header h1, 
+.section-header h2 {
+    position: relative;
+    display: inline-block;
+}
+
+.section-header h1::after,
+.section-header h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 60px;
+    height: 4px;
+    background-color: var(--accent-color);
+    border-radius: 2px;
+}
+
+/* Animações sutis */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.fade-in.delay-1 {
+    animation-delay: 0.1s;
+}
+
+.fade-in.delay-2 {
+    animation-delay: 0.2s;
+}
+
+.fade-in.delay-3 {
+    animation-delay: 0.3s;
+}

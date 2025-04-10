@@ -1,66 +1,77 @@
-// Componente de habilidades com React
-console.log("📌 Inicializando componente de habilidades...");
+/**
+ * Componente de Habilidades Técnicas
+ * Renderiza os cards de habilidades usando React
+ */
 
-// Verificação imediata das dependências
-if (!window.React) {
-    console.error("❌ React não está disponível!");
-    document.getElementById('skills-debug').innerHTML = '<h3>Erro de Carregamento</h3><p>A biblioteca React não foi carregada corretamente</p>';
-    document.getElementById('skills-debug').style.display = 'block';
+// Garantir que o DOM esteja carregado antes de executar o script
+document.addEventListener('DOMContentLoaded', () => {
+    // Verificar se as dependências estão carregadas
+    if (!window.React || !window.ReactDOM) {
+        console.error("React ou ReactDOM não estão disponíveis. Tentando carregar novamente em 500ms...");
+        setTimeout(checkAndLoadDependencies, 500);
+        return;
+    }
+    
+    // Verificar se os dados de habilidades estão disponíveis
+    if (!window.skillsData) {
+        console.error("Dados de habilidades não estão disponíveis. Tentando carregar novamente em 500ms...");
+        setTimeout(checkAndLoadDependencies, 500);
+        return;
+    }
+    
+    // Se tudo estiver pronto, inicializar o componente
+    renderSkillsComponent();
+});
+
+// Função para verificar e carregar dependências
+function checkAndLoadDependencies() {
+    if (!window.React || !window.ReactDOM || !window.skillsData) {
+        console.error("Dependências ainda não estão disponíveis. Verificando estado do documento...");
+        
+        // Mostrar elemento de debug se estiver tendo problemas
+        const debugElement = document.getElementById('skills-debug');
+        if (debugElement) {
+            debugElement.style.display = 'block';
+            debugElement.innerHTML = '<h3>Carregando Dependências</h3><p>Aguardando carregamento das dependências React. Se esta mensagem persistir, pode haver um problema com a conexão à internet ou com os servidores CDN.</p>';
+        }
+        
+        // Tentar novamente em 1 segundo
+        setTimeout(checkAndLoadDependencies, 1000);
+        return;
+    }
+    
+    // Se as dependências foram carregadas, renderizar o componente
+    renderSkillsComponent();
 }
 
-if (!window.ReactDOM) {
-    console.error("❌ ReactDOM não está disponível!");
-    document.getElementById('skills-debug').innerHTML = '<h3>Erro de Carregamento</h3><p>A biblioteca ReactDOM não foi carregada corretamente</p>';
-    document.getElementById('skills-debug').style.display = 'block';
-}
-
-// Função para criar o componente de habilidades com uma abordagem mais robusta
+// Função principal para renderizar o componente de habilidades
 function renderSkillsComponent() {
-    // Referência ao elemento raiz
-    const skillsRoot = document.getElementById("skills-root");
+    const skillsRoot = document.getElementById('skills-root');
     
     if (!skillsRoot) {
-        console.error("❌ Elemento #skills-root não encontrado!");
-        return;
-    }
-    
-    // Verificar novamente se as bibliotecas necessárias estão disponíveis
-    if (!window.React || !window.ReactDOM) {
-        console.error("❌ React ou ReactDOM não estão disponíveis no momento da renderização!");
-        return;
-    }
-    
-    // Verificar os dados de habilidades
-    if (!window.skillsData) {
-        console.error("❌ Dados de habilidades não disponíveis!");
-        document.getElementById('skills-debug').innerHTML = '<h3>Erro de Dados</h3><p>Os dados de habilidades não foram carregados</p>';
-        document.getElementById('skills-debug').style.display = 'block';
+        console.error("Elemento #skills-root não encontrado!");
         return;
     }
     
     try {
-        // Componentes em variáveis para evitar problemas com o escopo do Babel
-        const React = window.React;
-        const { createElement } = React;
+        const { createElement } = window.React;
         
-        // Componente para exibir uma habilidade específica com barra de progresso
-        function SkillItem(props) {
-            return createElement('div', { className: 'progress-item' },
-                createElement('span', { className: 'skill-name' }, props.name),
-                createElement('div', { className: 'progress-bar' },
+        // Componente de Item de Habilidade
+        function SkillItem({ name, level }) {
+            return createElement('div', { className: 'skill-item' },
+                createElement('span', { className: 'skill-name' }, name),
+                createElement('div', { className: 'skill-progress' },
                     createElement('div', { 
-                        className: 'progress', 
-                        style: { width: `${props.level}%` },
-                        'data-width': `${props.level}%`
+                        className: 'skill-bar', 
+                        style: { width: `${level}%` } 
                     })
                 )
             );
         }
         
-        // Componente para um card de categoria de habilidades
-        function SkillCard(props) {
-            // Criar elementos para cada habilidade
-            const skillElements = props.skills.map((skill, index) =>
+        // Componente de Card de Habilidade
+        function SkillCard({ title, description, image, skills, tags }) {
+            const skillElements = skills.map((skill, index) =>
                 createElement(SkillItem, { 
                     key: index, 
                     name: skill.name, 
@@ -68,106 +79,70 @@ function renderSkillsComponent() {
                 })
             );
             
-            // Criar elementos para cada tag
-            const tagElements = props.tags.map((tag, index) =>
-                createElement('span', { key: index }, tag)
+            const tagElements = tags.map((tag, index) =>
+                createElement('span', { key: index, className: 'skill-tag' }, tag)
             );
             
-            // Header do card com imagem e título
-            const cardHeader = createElement('div', { className: 'skill-card-header' },
-                createElement('img', { src: props.image, alt: props.title }),
-                createElement('h3', null, props.title)
-            );
-            
-            // Retornar o card completo com data-aos-delay personalizado
-            return createElement('div', { 
-                className: 'skill-card',
-                'data-aos': 'fade-up', 
-                'data-aos-delay': props.delay || 0,
-                'data-tilt': true, // Habilitar efeito tilt
-                'data-tilt-glare': true,
-                'data-tilt-max-glare': 0.1,
-                'data-tilt-max': 5
-            },
-                cardHeader,
-                createElement('p', null, props.description),
-                createElement('div', { className: 'skill-progress' }, ...skillElements),
-                createElement('div', { className: 'skill-tags' }, ...tagElements)
+            return createElement('div', { className: 'skill-card' },
+                createElement('div', { className: 'skill-card-header' },
+                    createElement('img', { src: image, alt: title }),
+                    createElement('h3', null, title)
+                ),
+                createElement('p', { className: 'skill-description' }, description),
+                createElement('div', { className: 'skill-items' }, skillElements),
+                createElement('div', { className: 'skill-tags' }, tagElements)
             );
         }
         
-        // Componente principal que renderiza todos os cards de habilidades
+        // Componente principal
         function SkillsComponent() {
-            const cards = Object.keys(window.skillsData).map((key, index) => {
-                const data = window.skillsData[key];
-                return createElement(SkillCard, {
-                    key: key,
-                    title: data.title,
-                    description: data.description,
-                    image: data.image,
-                    skills: data.skills,
-                    tags: data.tags,
-                    delay: index * 100 // Atraso gradual para cada card
-                });
-            });
+            const cards = [];
             
-            return createElement('div', { className: 'skills-container' },
-                createElement('div', { className: 'skills-grid' }, ...cards)
-            );
+            // Criar cards baseados nos dados disponíveis
+            for (const key in window.skillsData) {
+                if (window.skillsData.hasOwnProperty(key)) {
+                    const data = window.skillsData[key];
+                    cards.push(
+                        createElement(SkillCard, {
+                            key: key,
+                            title: data.title,
+                            description: data.description,
+                            image: data.image || 'assets/img/skill-default.png',
+                            skills: data.skills || [],
+                            tags: data.tags || []
+                        })
+                    );
+                }
+            }
+            
+            return createElement('div', { className: 'skills-container' }, ...cards);
         }
         
-        // Detectar a versão do React e usar o método apropriado
-        if (typeof ReactDOM.createRoot === 'function') {
+        // Renderizar usando a versão apropriada do ReactDOM
+        if (typeof window.ReactDOM.createRoot === 'function') {
             // React 18+
-            try {
-                const root = ReactDOM.createRoot(skillsRoot);
-                root.render(createElement(SkillsComponent));
-                console.log("✅ Componente de habilidades renderizado com sucesso (React 18+)");
-            } catch (err) {
-                console.error("❌ Erro ao renderizar com createRoot:", err);
-                // Fallback para o método tradicional
-                ReactDOM.render(createElement(SkillsComponent), skillsRoot);
-                console.log("✅ Componente de habilidades renderizado com método alternativo");
-            }
+            const root = window.ReactDOM.createRoot(skillsRoot);
+            root.render(createElement(SkillsComponent));
         } else {
             // React 17 ou anterior
-            ReactDOM.render(createElement(SkillsComponent), skillsRoot);
-            console.log("✅ Componente de habilidades renderizado com sucesso (React <18)");
+            window.ReactDOM.render(createElement(SkillsComponent), skillsRoot);
         }
         
-        // Adicionar uma classe para indicar renderização bem-sucedida
-        skillsRoot.classList.add('skills-loaded');
-
-        // Inicializar efeito de inclinação nos cards de habilidades
+        console.log("✅ Componente de habilidades renderizado com sucesso!");
+        
+        // Adicionar classes para estilos específicos após renderização
         setTimeout(() => {
-            if (window.VanillaTilt && document.querySelectorAll('.skill-card').length > 0) {
-                VanillaTilt.init(document.querySelectorAll('.skill-card'), {
-                    max: 5,
-                    speed: 300,
-                    glare: true,
-                    "max-glare": 0.1
-                });
-                console.log("✨ Efeitos de inclinação aplicados aos cards de habilidades");
-            }
-        }, 100);
+            document.querySelectorAll('.skill-card').forEach(card => {
+                card.classList.add('skill-card-loaded');
+            });
+        }, 300);
         
     } catch (error) {
-        console.error("❌ Erro ao renderizar o componente de habilidades:", error);
-        document.getElementById('skills-debug').innerHTML = 
-            '<h3>Erro na Renderização</h3>' +
-            '<p>Ocorreu um erro ao renderizar as habilidades:</p>' +
-            `<pre>${error.message}</pre>`;
+        console.error("❌ Erro ao renderizar componente de habilidades:", error);
         document.getElementById('skills-debug').style.display = 'block';
+        document.getElementById('skills-debug').innerHTML = 
+            `<h3>Erro de Renderização</h3>
+             <p>Ocorreu um erro ao renderizar o componente de habilidades:</p>
+             <pre>${error.message}</pre>`;
     }
-}
-
-// Garantir que o DOM esteja carregado e as dependências estejam disponíveis
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-        // Aguardar um pouco mais para garantir que todas as dependências estejam carregadas
-        setTimeout(renderSkillsComponent, 500);
-    });
-} else {
-    // Se o DOM já estiver carregado, aguardar um pouco para garantir que as dependências estejam disponíveis
-    setTimeout(renderSkillsComponent, 500);
 }

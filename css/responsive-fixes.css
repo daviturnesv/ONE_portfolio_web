@@ -1,0 +1,185 @@
+/* Ajustes de responsividade para o portfolio principal */
+
+/* Ajustes gerais de espaçamento */
+body {
+    grid-gap: 0 5px; /* Reduzido espaçamento horizontal entre colunas */
+}
+
+main {
+    margin-right: 5px; /* Reduzido espaçamento à direita */
+    padding: 90px 20px 30px; /* Aumentado padding vertical */
+}
+
+/* Espaçamento entre elementos */
+p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.main-section {
+    margin-bottom: 60px; /* Mais espaçamento entre seções */
+    padding-bottom: 20px;
+}
+
+h1, h2, h3 {
+    margin-bottom: 20px;
+}
+
+.stats-container {
+    margin: 30px 0;
+}
+
+/* Ajustes específicos para listas */
+ul, ol {
+    padding-left: 20px;
+    margin: 15px 0;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+/* Layout principal */
+@media screen and (min-width: 1025px) {
+    body {
+        grid-template-columns: 250px 1fr;
+        grid-gap: 0;
+    }
+    
+    main {
+        margin-left: 250px;
+        width: calc(100% - 250px);
+    }
+    
+    .main-section {
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 15px 25px;
+    }
+    
+    .project-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Ajuste para telas médias */
+@media screen and (max-width: 1024px) and (min-width: 769px) {
+    body {
+        grid-template-columns: 220px 1fr;
+        grid-gap: 0;
+    }
+    
+    aside {
+        width: 220px;
+    }
+    
+    main {
+        margin-left: 220px;
+        width: calc(100% - 220px);
+        padding: 75px 15px 20px;
+        margin-right: 0;
+    }
+    
+    .hero-content {
+        gap: 20px;
+    }
+    
+    .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .main-section {
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: 0;
+    }
+}
+
+/* Ajustes para tablets pequenos */
+@media screen and (max-width: 768px) {
+    body {
+        grid-template-areas: 
+            "h h"
+            "m m"
+            "f f";
+        grid-template-columns: 1fr;
+    }
+    
+    aside {
+        display: none;
+    }
+    
+    main {
+        margin-left: 0;
+        width: 100%;
+        padding: 80px 15px 15px;
+    }
+    
+    .hero-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+    
+    .hero-image {
+        order: -1; /* Coloca a imagem primeiro em mobile */
+    }
+    
+    .hero-text {
+        text-align: center;
+    }
+    
+    .competencies-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .project-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        justify-content: center;
+    }
+    
+    .contact-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+}
+
+/* Correção para elementos específicos */
+.skill-card {
+    height: 100%;
+}
+
+.competencies-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.competencies-tags span {
+    white-space: nowrap;
+}
+
+.stats-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    margin: 30px 0;
+}
+
+/* Melhorias para entrada de formulário */
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Melhoria para links do projeto */
+.project-links {
+    margin-top: 15px;
+}
+
+/* Link para o novo arquivo CSS no index.html */
