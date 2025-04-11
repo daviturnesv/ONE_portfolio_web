@@ -81,7 +81,7 @@
     <aside>
         <h1>Davi Turnes Vieira</h1>
         <div class="blured-box">
-            <img src="assets/img/Eu_no_Mine.png" alt="Davi Turnes Vieira">
+            <img width="150px" src="assets/img/Eu_no_Mine.png" alt="Davi Turnes Vieira">
         </div>
         <p>Desenvolvedor Front-end especializado em criar interfaces modernas e responsivas.</p>
         <p>Estudante de <a href="https://sin.ufsc.br/" target="_blank">Sistemas de Informação (SIN)</a> na UFSC.</p>
@@ -542,7 +542,7 @@
                 </div>
                 
                 <div class="contact-form-container">
-                    <form id="contactForm" class="contact-form">
+                    <form id="contactForm" class="contact-form" novalidate>
                         <div class="form-group">
                             <label for="name">Nome</label>
                             <input type="text" id="name" name="name" required placeholder="Seu nome completo">
@@ -563,7 +563,7 @@
                             <textarea id="message" name="message" rows="5" required placeholder="Digite sua mensagem aqui..."></textarea>
                         </div>
                         
-                        <button type="submit" class="submit-btn">
+                        <button type="button" id="submitButton" class="submit-btn" onclick="document.dispatchEvent(new CustomEvent('formularioEnviar'));">
                             <span>Enviar mensagem</span>
                             <div class="btn-icon"><i class="fas fa-paper-plane"></i></div>
                             <div class="spinner"></div>
@@ -602,8 +602,15 @@
         (function() {
             // Verificar se o EmailJS está disponível
             if (typeof emailjs !== 'undefined') {
-                // Inicializar com o ID de usuário público
-                emailjs.init("IPeVkOWJQgdJL18Xp");
+                try {
+                    // Inicializar com o ID de usuário público
+                    emailjs.init("IPeVkOWJQgdJL18Xp");
+                    console.log("✅ EmailJS inicializado com sucesso");
+                } catch (erro) {
+                    console.error("❌ Erro ao inicializar EmailJS:", erro);
+                }
+            } else {
+                console.error("❌ EmailJS não está disponível - verifique a conexão com a internet");
             }
         })();
     </script>
@@ -690,5 +697,41 @@
     </script>
     <script src="js/hero-layout-fix.js"></script>
     <script src="js/mobile-menu-fix.js"></script>
+    
+    <!-- Script de fallback para o formulário de contato -->
+    <script>
+        // Script de fallback para garantir que o formulário funcione
+        (function() {
+            document.addEventListener('formularioEnviar', function() {
+                console.log('🚀 Evento formularioEnviar capturado!');
+                const form = document.getElementById('contactForm');
+                if (form) form.dispatchEvent(new Event('submit'));
+            });
+            
+            // Verificação adicional após carregamento completo
+            window.addEventListener('load', function() {
+                console.log('🔍 Verificando botão de envio após carregamento completo');
+                const botao = document.querySelector('.submit-btn');
+                const form = document.getElementById('contactForm');
+                
+                if (botao && form) {
+                    console.log('✅ Configurando botão após carregamento completo');
+                    
+                    // Remover qualquer handler existente
+                    const novoBtn = botao.cloneNode(true);
+                    botao.parentNode.replaceChild(novoBtn, botao);
+                    
+                    // Adicionar novo handler diretamente
+                    novoBtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        console.log('🖱️ Botão de envio clicado via fallback');
+                        
+                        // Disparar o evento submit manualmente
+                        form.dispatchEvent(new Event('submit'));
+                    });
+                }
+            });
+        })();
+    </script>
 </body>
 </html>
