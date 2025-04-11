@@ -1,0 +1,27 @@
+/* Estilos para botões de idioma */
+.lang-btn {
+    padding: 8px 12px;
+    margin: 0 5px;
+    background-color: transparent;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.lang-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.lang-btn.active {
+    background-color: #2a7ae4;
+    color: white;
+    border-color: #2a7ae4;
+}
+
+.lang-selector {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 20px;
+}
