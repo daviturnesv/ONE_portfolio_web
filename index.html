@@ -11,9 +11,13 @@
     <link rel="stylesheet" href="css/skills-section.css">
     <link rel="stylesheet" href="css/theme-variables.css">
     <link rel="stylesheet" href="css/bug-fixes.css">
-    <link rel="stylesheet" href="css/responsive-fixes.css"> <!-- Novo arquivo CSS para ajustes responsivos -->
-    <link rel="stylesheet" href="css/spacing-fixes.css"> <!-- Novo arquivo para ajustes de espaçamento -->
-    <link rel="stylesheet" href="css/modern-styles.css"> <!-- Novo arquivo para estilos modernos -->
+    <link rel="stylesheet" href="css/responsive-fixes.css">
+    <link rel="stylesheet" href="css/spacing-fixes.css">
+    <link rel="stylesheet" href="css/modern-styles.css">
+    <link rel="stylesheet" href="css/scrollbar-styles.css">
+    <link rel="stylesheet" href="css/stats-counter.css">
+    <link rel="stylesheet" href="css/project-cards.css">
+    <link rel="stylesheet" href="css/contact-form.css">
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
     <meta name="description" content="Portfólio de Davi Turnes Vieira, desenvolvedor front-end especializado em criar interfaces modernas e responsivas com React, JavaScript e CSS.">
     <meta name="keywords" content="desenvolvedor front-end, React, JavaScript, HTML, CSS, portfolio">
@@ -77,7 +81,7 @@
     <aside>
         <h1>Davi Turnes Vieira</h1>
         <div class="blured-box">
-            <img width="150px" src="assets/img/Eu_no_Mine.png" alt="Davi Turnes Vieira">
+            <img src="assets/img/Eu_no_Mine.png" alt="Davi Turnes Vieira">
         </div>
         <p>Desenvolvedor Front-end especializado em criar interfaces modernas e responsivas.</p>
         <p>Estudante de <a href="https://sin.ufsc.br/" target="_blank">Sistemas de Informação (SIN)</a> na UFSC.</p>
@@ -155,11 +159,11 @@
                     <span class="stat-label">Anos de Experiência</span>
                 </div>
                 <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
-                    <span class="stat-number" data-count="9">0</span>
+                    <span class="stat-number" data-count="11">0</span>
                     <span class="stat-label">Projetos Completos</span>
                 </div>
                 <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
-                    <span class="stat-number" data-count="113">0</span>
+                    <span class="stat-number" data-count="128">0</span>
                     <span class="stat-label">Commits no GitHub</span>
                 </div>
             </div>
@@ -180,6 +184,12 @@
                         <span>CSS3</span>
                         <span>TailwindCSS</span>
                         <span>Responsive Design</span>
+                        <span>Mobile First</span>
+                        <span>React Hook Form</span>
+                        <span>TanStack Query</span>
+                        <span>SPA</span>
+                        <span>Web Speech API</span>
+                        <span>Vite</span>
                     </div>
                 </div>
                 
@@ -190,8 +200,37 @@
                         <span>Spring Boot</span>
                         <span>Node.js</span>
                         <span>Python</span>
+                        <span>C#/.NET</span>
                         <span>RESTful APIs</span>
+                        <span>TypeScript</span>
+                        <span>Fastify</span>
+                        <span>Express</span>
+                        <span>Flask</span>
+                        <span>PHP/Laravel</span>
                         <span>JPA/JDBC</span>
+                        <span>Authentication/JWT</span>
+                        <span>API Documentation</span>
+                    </div>
+                </div>
+
+                <div class="competencies-group" data-aos="fade-up" data-aos-delay="200">
+                    <h3 data-i18n="competencies_tools">Ferramentas & Metodologias</h3>
+                    <div class="competencies-tags">
+                        <span>Git/GitHub</span>
+                        <span>Docker</span>
+                        <span>PostgreSQL</span>
+                        <span>MySQL</span>
+                        <span>MongoDB</span>
+                        <span>SQLite</span>
+                        <span>Redis</span>
+                        <span>Swagger</span>
+                        <span>CI/CD</span>
+                        <span>Drizzle ORM</span>
+                        <span>Clean Code</span>
+                        <span>Agile/Scrum</span>
+                        <span>VS Code</span>
+                        <span>IntelliJ IDEA</span>
+                        <span>TRAE IDE</span>
                     </div>
                 </div>
             </div>
@@ -232,13 +271,25 @@
                     <div class="skills-fallback-item">
                         <span class="skills-fallback-name">Java</span>
                         <div class="skills-fallback-bar">
-                            <div class="skills-fallback-progress" style="width: 80%"></div>
+                            <div class="skills-fallback-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skills-fallback-item">
+                        <span class="skills-fallback-name">PHP</span>
+                        <div class="skills-fallback-bar">
+                            <div class="skills-fallback-progress" style="width: 70%"></div>
                         </div>
                     </div>
                     <div class="skills-fallback-item">
                         <span class="skills-fallback-name">Python</span>
                         <div class="skills-fallback-bar">
-                            <div class="skills-fallback-progress" style="width: 70%"></div>
+                            <div class="skills-fallback-progress" style="width: 60%"></div>
+                        </div>
+                    </div>
+                    <div class="skills-fallback-item">
+                        <span class="skills-fallback-name">C#</span>
+                        <div class="skills-fallback-bar">
+                            <div class="skills-fallback-progress" style="width: 50%"></div>
                         </div>
                     </div>
                 </div>
@@ -259,71 +310,186 @@
                 <div class="project-card" data-aos="fade-up" data-aos-delay="100" data-category="web">
                     <img src="assets/img/jogo_numero_secreto_Tela.png" alt="Jogo do Número Secreto">
                     <h3>Jogo do Número Secreto</h3>
-                    <p>Aplicação web interativa onde o usuário precisa adivinhar um número aleatório através de dicas e tentativas.</p>
+                    <p>Jogo de adivinhação de números desenvolvido com HTML, CSS e JavaScript. Inclui múltiplos temas visuais, narrador de voz para acessibilidade, histórico de jogos e leaderboard. Projeto criado como parte do programa Oracle Next Education (ONE).</p>
                     <div class="project-tech">
                         <span>HTML5</span>
                         <span>CSS3</span>
                         <span>JavaScript</span>
                         <span>Web Speech API</span>
+                        <span>Responsivo</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/daviturnesv/ONE_jogo-numero-secreto.git" class="btn project-btn">
+                        <a href="https://github.com/daviturnesv/ONE_numeroSecreto" class="btn project-btn">
                             <i class="fab fa-github"></i> Ver Código
                         </a>
                     </div>
                 </div>
                 
                 <!-- Amigo Secreto -->
-                <div class="project-card" data-aos="fade-up" data-aos-delay="100" data-category="web">
+                <div class="project-card" data-aos="fade-up" data-aos-delay="120" data-category="web">
                     <img src="assets/img/amigo_secreto_tela_inicial.png" alt="Sorteio de Amigo Secreto">
                     <h3>Sorteio de Amigo Secreto</h3>
-                    <p>Sistema para organização de amigos secretos com cadastro de participantes, validação de dados e sorteio automático que evita duplicações.</p>
+                    <p>Aplicação web que simplifica a organização de sorteios de amigo secreto. Desenvolvida com JavaScript puro, a aplicação não depende de frameworks ou bibliotecas externas, garantindo carregamento rápido e compatibilidade com a maioria dos navegadores, desenvolvido durante o Challenge ONE.</p>
                     <div class="project-tech">
                         <span>HTML5</span>
                         <span>CSS3</span>
                         <span>JavaScript</span>
-                        <span>API REST</span>
-                        <span>Algoritmos</span>
+                        <span>Jest</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/daviturnesv/ONE_challenge-amigo-secreto_v1.git" class="btn project-btn">
+                        <a href="https://github.com/daviturnesv/ONE_challenge-amigo-secreto_v1" class="btn project-btn">
+                            <i class="fab fa-github"></i> Ver Código
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- OurTube -->
+                <div class="project-card" data-aos="fade-up" data-aos-delay="140" data-category="other">
+                    <img src="assets\img\ourtube_gui.png" alt="OurTube">
+                    <h3>OurTube</h3>
+                    <p>Aplicativo Python para download de vídeos/áudios do YouTube com GUI e CLI. Recursos: seleção de qualidade, playlists, extração MP3 e organização automática. Tecnologias: yt-dlp, FFmpeg, Tkinter, Threading, Mutagen, Pillow, Colorama e tqdm. Instalação simplificada via script batch com configuração automática de dependências.</p>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>yt-dlp</span>
+                        <span>FFmpeg</span>
+                        <span>Tkinter</span>
+                        <span>Threading</span>
+                        <span>Mutagen</span>
+                        <span>Pillow</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/daviturnesv/OurTube" class="btn project-btn">
+                            <i class="fab fa-github"></i> Ver Código
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Plann.er -->
+                <div class="project-card" data-aos="fade-up" data-aos-delay="160" data-category="java">
+                    <img src="assets\img\planner_request.png" alt="Plann.er">
+                    <h3>Plann.er</h3>
+                    <p>Aplicativo Java com Spring Boot para organizar viagens. Permite criar viagens, adicionar atividades e links, convidar participantes via e-mail e gerenciar confirmações, utilizando JPA, H2 Database, Flyway, Lombok e Dev Tools.</p>
+                    <div class="project-tech">
+                        <span>Java</span>
+                        <span>Spring Framework</span>
+                        <span>H2 Database</span>
+                        <span>Flyway</span>
+                        <span>Lombok</span>
+                        <span>Jakarta Servlet</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/daviturnesv/plann.er" class="btn project-btn">
+                            <i class="fab fa-github"></i> Ver Código
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Todo List -->
+                <div class="project-card" data-aos="fade-up" data-aos-delay="180" data-category="java">
+                    <img src="assets\img\todo_list_post.png" alt="Todo List">
+                    <h3>Todo List</h3>
+                    <p>Aplicação de Lista de Tarefas desenvolvida com Spring Boot, utilizando Spring Data JPA para persistência de dados, Jakarta Servlet para manipulação de requisições HTTP, BCrypt para hashing de senhas e Lombok para simplificação do código.</p>
+                    <div class="project-tech">
+                        <span>Java</span>
+                        <span>Spring Framework</span>
+                        <span>Jakarta Servlet</span>
+                        <span>BCrypt</span>
+                        <span>Apache Maven</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/daviturnesv/todolist" class="btn project-btn">
+                            <i class="fab fa-github"></i> Ver Código
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Projeto Delta U42 -->
+                <div class="project-card" data-aos="fade-up" data-aos-delay="200" data-category="other">
+                    <img src="assets/img/projeto_delta_screenshot.png" alt="Projeto Delta U42">
+                    <h3>Projeto Delta U42</h3>
+                    <p>Projeto em Arduino de uma maquete de uma base submersa, com sistema de drenagem, ventilação e iluminação, com controle local e via bluetooth.</p>
+                    <div class="project-tech">
+                        <span>C++</span>
+                        <span>Arduino Leonardo</span>
+                        <span>MQTT</span>
+                        <span>Sensores DHT22</span>
+                        <span>Sensores RFID</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/daviturnesv/Projeto_delta_U42" class="btn project-btn">
+                            <i class="fab fa-github"></i> Ver Código
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- RPG CLT -->
+                <div class="project-card" data-aos="fade-up" data-aos-delay="220" data-category="other">
+                    <img src="assets/img/rpg_clt_screenshot.png" alt="RPG CLT">
+                    <h3>RPG CLT</h3>
+                    <p>Jogo de RPG baseado em texto desenvolvido em Python para disciplina de Desenvolvimento de Sistemas Orientados a Objetos, com sistema de combate, inventário e narrativa.</p>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>POO</span>
+                        <span>Strategy Pattern</span>
+                        <span>Factory Method</span>
+                        <span>Console App</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/daviturnesv/dsoo1-trabalho1-rpg_clt" class="btn project-btn">
+                            <i class="fab fa-github"></i> Ver Código
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Gerenciador de Metas -->
+                <div class="project-card" data-aos="fade-up" data-aos-delay="240" data-category="other">
+                    <img src="assets/img/gerenciador_metas_screenshot.png" alt="Gerenciador de Metas">
+                    <h3>Gerenciador de Metas</h3>
+                    <p>Aplicação para definição e acompanhamento de metas pessoais desenvolvida durante o NLW17, com funcionalidades de criação, edição e exclusão de metas e categorias.</p>
+                    <div class="project-tech">
+                        <span>JavaScript</span>
+                        <span>H2 Database</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/daviturnesv/nlw17_javaScript_trilha_iniciante_Gerenciador-de-metas" class="btn project-btn">
+                            <i class="fab fa-github"></i> Ver Código
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- RPG Market -->
+                <div class="project-card" data-aos="fade-up" data-aos-delay="260" data-category="web">
+                    <img src="assets/img/rpg_market_screenshot.png" alt="RPG Market">
+                    <h3>RPG Market</h3>
+                    <p>Plataforma de comércio virtual baseada em jogos de RPG que permite aos jogadores comprar, vender e trocar itens, com sistema de inventário, moeda virtual e negociações entre usuários.</p>
+                    <div class="project-tech">
+                        <span>Full-Stack</span>
+                        <span>Spring Boot</span>
+                        <span>Thymeleaf</span>
+                        <span>MongoDB</span>
+                        <span>Spring Security</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/daviturnesv/rpg_market" class="btn project-btn">
                             <i class="fab fa-github"></i> Ver Código
                         </a>
                     </div>
                 </div>
                 
                 <!-- Portfolio Web -->
-                <div class="project-card" data-aos="fade-up" data-aos-delay="150" data-category="web">
+                <div class="project-card" data-aos="fade-up" data-aos-delay="280" data-category="web">
                     <img src="assets/img/portfolio_screenshot.png" alt="Portfólio Web">
                     <h3>Portfólio Web</h3>
-                    <p>Site pessoal responsivo desenvolvido com HTML, CSS e JavaScript para mostrar meus projetos e habilidades.</p>
+                    <p>Site pessoal responsivo com tema claro/escuro, internacionalização, animações suaves e seções para projetos, habilidades e contato, desenvolvido como projeto do curso ONE.</p>
                     <div class="project-tech">
                         <span>HTML5</span>
                         <span>CSS3</span>
                         <span>JavaScript</span>
                         <span>React</span>
-                        <span>Responsive Design</span>
+                        <span>AOS</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/daviturnesv/ONE_portfolio_web.git" class="btn project-btn">
-                            <i class="fab fa-github"></i> Ver Código
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- App Java -->
-                <div class="project-card" data-aos="fade-up" data-aos-delay="200" data-category="java">
-                    <img src="assets/img/java_app_screenshot.png" alt="Aplicação Java">
-                    <h3>Sistema de Gerenciamento</h3>
-                    <p>Aplicação Java para gerenciamento de dados com interface gráfica Swing e persistência em banco de dados.</p>
-                    <div class="project-tech">
-                        <span>Java</span>
-                        <span>Swing</span>
-                        <span>MySQL</span>
-                        <span>JDBC</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/daviturnesv/java-management-system.git" class="btn project-btn">
+                        <a href="https://github.com/daviturnesv/ONE_portfolio_web" class="btn project-btn">
                             <i class="fab fa-github"></i> Ver Código
                         </a>
                     </div>
@@ -334,25 +500,31 @@
         <section id="section-disciplines" class="main-section">
             <h1>Disciplinas Cursadas</h1>
             
-            <h2>2023-2</h2>
+            <h2>2025-1 (Cursando)</h2>
             <ul>
+                <li><b>EGC5009</b> - Geração de Idéias e Criatividade em Informática</li>
+                <li><b>EPS5211</b> - Programação Econômica e Financeira</li>
+                <li><b>INE5609</b> - Estruturas de Dados</li>
                 <li><b>INE5646</b> - Programação para Web</li>
-                <li><b>INE5417</b> - Engenharia de Software I</li>
-                <li><b>INE5408</b> - Estruturas de Dados</li>
+                <li><b>INE5649</b> - Técnicas Estatísticas de Predição</li>
             </ul>
             
-            <h2>2023-1</h2>
+            <h2>2024-2</h2>
             <ul>
-                <li><b>INE5404</b> - Programação Orientada a Objetos II</li>
-                <li><b>INE5406</b> - Sistemas Digitais</li>
-                <li><b>INE5407</b> - Ciência, Tecnologia e Sociedade</li>
+                <li><b>CAD5103</b> - Administração I</li>
+                <li><b>EGC5036</b> - Marketing Pessoal e Empreendedorismo</li>
+                <li><b>INE5605</b> - Desenvolvimento de Sistemas Orientados a Objetos I</li>
+                <li><b>INE5606</b> - Probabilidade e Estatística</li>
+                <li><b>INE5607</b> - Organização e Arquitetura de Computadores</li>
             </ul>
             
-            <h2>2022-2</h2>
+            <h2>2024-1</h2>
             <ul>
-                <li><b>INE5402</b> - Programação Orientada a Objetos I</li>
-                <li><b>INE5403</b> - Fundamentos de Matemática Discreta para Computação</li>
-                <li><b>EEL5105</b> - Circuitos e Técnicas Digitais</li>
+                <li><b>CAD5240</b> - Aspectos Comportamentais do Empreendedor</li>
+                <li><b>EGC5015</b> - Teoria Geral de Sistemas</li>
+                <li><b>INE5601</b> - Fundamentos Matemáticos da Informática</li>
+                <li><b>INE5602</b> - Introdução à Informática</li>
+                <li><b>INE5603</b> - Introdução à Programação Orientada a Objetos</li>
             </ul>
         </section>
         
@@ -371,32 +543,28 @@
                 
                 <div class="contact-form-container">
                     <form id="contactForm" class="contact-form">
-                        <h3>Envie uma mensagem</h3>
+                        <div class="form-group">
+                            <label for="name">Nome</label>
+                            <input type="text" id="name" name="name" required placeholder="Seu nome completo">
+                        </div>
                         
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="name">Nome</label>
-                                <input type="text" id="name" name="name" placeholder="Seu nome completo" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" id="email" name="email" placeholder="seu.email@exemplo.com" required>
-                            </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="seu.email@exemplo.com">
                         </div>
                         
                         <div class="form-group">
                             <label for="subject">Assunto</label>
-                            <input type="text" id="subject" name="subject" placeholder="Sobre o que você quer conversar?" required>
+                            <input type="text" id="subject" name="subject" required placeholder="Sobre o que você quer conversar?">
                         </div>
                         
                         <div class="form-group">
                             <label for="message">Mensagem</label>
-                            <textarea id="message" name="message" rows="5" placeholder="Digite sua mensagem aqui..." required></textarea>
+                            <textarea id="message" name="message" rows="5" required placeholder="Digite sua mensagem aqui..."></textarea>
                         </div>
                         
-                        <button type="submit" class="btn primary-btn submit-btn">
-                            <span class="btn-text">Enviar mensagem</span>
+                        <button type="submit" class="submit-btn">
+                            <span>Enviar mensagem</span>
                             <div class="btn-icon"><i class="fas fa-paper-plane"></i></div>
                             <div class="spinner"></div>
                         </button>
@@ -427,6 +595,19 @@
     <!-- Adicionar o CSS de fallback -->
     <link rel="stylesheet" href="css/skills-fallback.css">
     
+    <!-- EmailJS - Carregado apenas uma vez -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        // Inicializar EmailJS globalmente
+        (function() {
+            // Verificar se o EmailJS está disponível
+            if (typeof emailjs !== 'undefined') {
+                // Inicializar com o ID de usuário público
+                emailjs.init("IPeVkOWJQgdJL18Xp");
+            }
+        })();
+    </script>
+    
     <!-- Bibliotecas -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
@@ -442,10 +623,15 @@
     <script src="https://unpkg.com/vanilla-tilt@1.7.0/dist/vanilla-tilt.min.js"></script>
     
     <!-- Carregar scripts essenciais primeiro -->
-    <script src="js/theme-toggle.js"></script>
+    <script src="js/theme-sync.js"></script>
     <script src="js/navigation.js"></script>
+    <script src="js/theme-toggle.js"></script>
     <script src="js/ui-effects.js"></script>
     <script src="js/filter-fix.js"></script>
+    <script src="js/stats-counter-fix.js"></script>
+    <script src="js/project-cards-fix.js"></script>
+    <script src="js/project-images-handler.js"></script>
+    <script src="js/project-init.js"></script>
     
     <!-- Carregar scripts de componentes em paralelo -->
     <script>
@@ -500,12 +686,9 @@
                 console.error("❌ Erro ao carregar scripts React:", error);
                 document.getElementById('skills-debug').style.display = 'block';
             });
-            
-            // Carregar EmailJS para o formulário de contato
-            const emailjsScript = document.createElement('script');
-            emailjsScript.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js';
-            document.body.appendChild(emailjsScript);
         });
     </script>
+    <script src="js/hero-layout-fix.js"></script>
+    <script src="js/mobile-menu-fix.js"></script>
 </body>
 </html>

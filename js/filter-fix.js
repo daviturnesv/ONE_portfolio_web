@@ -3,8 +3,13 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Confirma que todos os cards são inicializados corretamente
-    setTimeout(() => {
+    // Inicialização imediata e com retry
+    initializeFilters();
+    
+    // Retry após um tempo para garantir que todos os elementos estejam carregados
+    setTimeout(initializeFilters, 500);
+    
+    function initializeFilters() {
         const filtrosProjetos = document.querySelectorAll('.project-filter .filter-btn');
         const projetosCards = document.querySelectorAll('.project-card');
         
@@ -14,25 +19,58 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         
+        // Limpa eventos anteriores para evitar duplicação
+        filtrosProjetos.forEach(btn => {
+            btn.removeEventListener('click', filterClickHandler);
+            btn.addEventListener('click', filterClickHandler);
+        });
+        
         // Restaura a visibilidade de todos os cartões
         projetosCards.forEach(card => {
+            card.style.display = '';
             card.classList.remove('hide-project');
         });
         
         // Re-aplica o filtro ativo
         const filtroAtivo = document.querySelector('.project-filter .filter-btn.active');
         if (filtroAtivo) {
-            const filtroValor = filtroAtivo.getAttribute('data-filter');
-            if (filtroValor && filtroValor !== 'all') {
-                projetosCards.forEach(card => {
-                    const categoriaCard = card.getAttribute('data-category');
-                    if (categoriaCard !== filtroValor) {
-                        card.classList.add('hide-project');
-                    }
-                });
-            }
+            applyFilter(filtroAtivo.getAttribute('data-filter'));
         }
         
         console.log('✅ Filtros de projetos corrigidos com sucesso');
-    }, 500);
+    }
+    
+    function filterClickHandler(e) {
+        const btn = e.currentTarget;
+        const filtro = btn.getAttribute('data-filter');
+        
+        // Atualiza classe ativa
+        document.querySelectorAll('.project-filter .filter-btn').forEach(el => {
+            el.classList.remove('active');
+        });
+        btn.classList.add('active');
+        
+        // Aplica o filtro
+        applyFilter(filtro);
+    }
+    
+    function applyFilter(filtro) {
+        const projetosCards = document.querySelectorAll('.project-card');
+        
+        projetosCards.forEach(card => {
+            if (filtro === 'all') {
+                card.style.display = '';
+                card.classList.remove('hide-project');
+            } else {
+                const categoriaCard = card.getAttribute('data-category');
+                if (categoriaCard === filtro) {
+                    card.style.display = '';
+                    card.classList.remove('hide-project');
+                } else {
+                    card.style.display = 'none';
+                    card.classList.add('hide-project');
+                }
+            }
+        });
+    }
 });

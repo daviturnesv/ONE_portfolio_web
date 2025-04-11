@@ -1,0 +1,80 @@
+/* Estilos modernos para barras de rolagem */
+
+/* Variáveis para barras de rolagem */
+:root {
+    --scrollbar-track: #f1f1f1;
+    --scrollbar-thumb: rgba(64, 115, 158, 0.6);
+    --scrollbar-thumb-hover: var(--accent-color);
+    --scrollbar-width: 10px;
+    --scrollbar-radius: 5px;
+}
+
+.dark-mode {
+    --scrollbar-track: #2a2a2a;
+    --scrollbar-thumb: rgba(77, 156, 222, 0.6);
+    --scrollbar-thumb-hover: var(--accent-color);
+}
+
+/* Estilização para navegadores baseados em WebKit (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: var(--scrollbar-width);
+    height: var(--scrollbar-width);
+}
+
+::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+    border-radius: var(--scrollbar-radius);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: var(--scrollbar-radius);
+    transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
+}
+
+/* Estilização para Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+/* Animação suave para a barra de rolagem */
+@keyframes fadeIn {
+    from { opacity: 0.5; }
+    to { opacity: 1; }
+}
+
+::-webkit-scrollbar-thumb {
+    animation: fadeIn 0.5s ease;
+}
+
+/* Ajustes específicos para áreas com rolagem */
+aside, main, .skills-container, .project-grid {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+/* Forçar atualização das cores da barra de rolagem quando o tema muda */
+body.dark-mode ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+}
+
+body.dark-mode ::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+}
+
+/* Melhorias para dispositivos touch */
+@media (hover: none) {
+    ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: var(--accent-color);
+    }
+}

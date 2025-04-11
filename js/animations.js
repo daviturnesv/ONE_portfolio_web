@@ -76,6 +76,44 @@ class ConfiguradorBarrasHabilidades {
         
         // Método 3: Timeout garantido
         this.configurarTimeout();
+        
+        // Método 4: Detectar cliques no menu para reajustar as barras
+        this.configurarDeteccaoCliquesMenu();
+    }
+
+    configurarDeteccaoCliquesMenu() {
+        const linksMenu = document.querySelectorAll('nav menu li a');
+        
+        linksMenu.forEach(link => {
+            link.addEventListener('click', () => {
+                // Pequeno atraso para permitir que a rolagem ocorra
+                setTimeout(() => {
+                    if (!this.foiAnimado) {
+                        this.animarBarrasHabilidades();
+                        this.foiAnimado = true;
+                    }
+                }, 500);
+            });
+        });
+    }
+
+    animarBarrasHabilidades() {
+        const barrasProgresso = document.querySelectorAll('.progress');
+        
+        barrasProgresso.forEach(barra => {
+            const largura = barra.getAttribute('data-width') || '80%';
+            
+            // Forçar reflow para garantir animação
+            barra.style.width = '0%';
+            
+            // Usar requestAnimationFrame para melhor performance
+            requestAnimationFrame(() => {
+                setTimeout(() => {
+                    barra.style.width = largura;
+                    barra.style.transition = 'width 1s ease-in-out';
+                }, 50);
+            });
+        });
     }
     
     configurarObserver() {
@@ -250,5 +288,4 @@ function criarGerenciadorInclinacao() {
                 VanillaTilt.init(elementos, opcoesFinais);
             }, 50);
         }
-    };
-}
+    }};

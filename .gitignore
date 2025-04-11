@@ -1,6 +1,7 @@
 # Ignorar a pasta do portfólio de exemplo
 exemplo-pagina-pessoal/
 
+
 # Dependências
 node_modules/
 package-lock.json

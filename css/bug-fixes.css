@@ -1,27 +1,8 @@
-/* Fix para sobreposições e bugs visuais */
+/* =========================================
+   CORREÇÕES DE BUGS VISUAIS E SOBREPOSIÇÕES
+   ========================================= */
 
-/* Correção de espaçamento no mobile */
-@media screen and (max-width: 768px) {
-    .hero-content {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .hero-image {
-        margin-top: 30px;
-    }
-    
-    .contact-container {
-        flex-direction: column;
-    }
-    
-    .contact-form-container {
-        width: 100%;
-        margin-top: 30px;
-    }
-}
-
-/* Correção de z-index para elementos sobrepostos */
+/* ---- Z-INDEX E SOBREPOSIÇÕES ---- */
 header {
     z-index: 1000;
 }
@@ -34,7 +15,36 @@ aside {
     z-index: 900;
 }
 
-/* Melhorias na diagramação geral */
+.scroll-progress {
+    z-index: 1001;
+}
+
+.back-to-top {
+    z-index: 1002;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s, transform 0.3s;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ---- MELHORIAS NA DIAGRAMAÇÃO GERAL ---- */
 section {
     max-width: 1200px;
     margin: 0 auto;
@@ -57,7 +67,7 @@ section h1::after {
     background-color: var(--accent-color);
 }
 
-/* Correção para project-cards */
+/* ---- CORREÇÕES PARA CARDS DE PROJETOS ---- */
 .project-card {
     display: flex;
     flex-direction: column;
@@ -82,14 +92,13 @@ section h1::after {
     margin-top: auto;
 }
 
-/* Correção para a grid de projetos */
 .project-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 25px;
 }
 
-/* Melhorias para seção de contato */
+/* ---- MELHORIAS PARA SEÇÃO DE CONTATO ---- */
 .contact-container {
     display: flex;
     gap: 40px;
@@ -108,7 +117,6 @@ section h1::after {
     flex: 2;
 }
 
-/* Correção para formulário de contato */
 .contact-form {
     background-color: var(--card-bg);
     padding: 30px;
@@ -212,106 +220,7 @@ section h1::after {
     border: 1px solid #f5c6cb;
 }
 
-/* Fix para a barra de progresso */
-.scroll-progress {
-    z-index: 1001;
-}
-
-/* Fix para o back-to-top */
-.back-to-top {
-    z-index: 1002;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    background-color: var(--accent-color);
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    cursor: pointer;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.3s, transform 0.3s;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.back-to-top.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Correção para o menu mobile */
-@media screen and (max-width: 768px) {
-    nav {
-        z-index: 1000;
-    }
-    
-    .mobile-menu-button.active + .logo + nav {
-        transform: translateY(0);
-    }
-
-    .form-row {
-        flex-direction: column;
-        gap: 0;
-    }
-    
-    .contact-container {
-        gap: 20px;
-    }
-
-    .contact-info, 
-    .contact-form-container {
-        padding: 0;
-    }
-
-    .contact-form {
-        padding: 20px;
-    }
-
-    .project-grid {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 15px;
-    }
-}
-
-/* Melhoria para telas menores */
-@media screen and (max-width: 480px) {
-    section {
-        padding: 1.5rem 0.75rem;
-    }
-
-    .contact-info {
-        padding: 15px;
-    }
-
-    .contact-form {
-        padding: 15px;
-    }
-
-    .form-group input,
-    .form-group textarea {
-        padding: 10px;
-    }
-
-    .submit-btn {
-        padding: 10px 20px;
-    }
-
-    .project-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-/* Adicionar tema claro/escuro para elementos de formulário */
+/* ---- VARIÁVEIS DE TEMA PARA FORMULÁRIOS ---- */
 :root {
     --input-bg: #f5f5f5;
     --input-text: #333;
@@ -325,3 +234,184 @@ section h1::after {
     --input-border: #444;
     --accent-rgb: 77, 156, 222;
 }
+
+/* ---- RESPONSIVIDADE ---- */
+@media screen and (max-width: 768px) {
+    /* Layout e espaçamento */
+    .hero-content {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .hero-image {
+        margin-top: 30px;
+    }
+    
+    .contact-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .contact-form-container {
+        width: 100%;
+        margin-top: 30px;
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .contact-info, 
+    .contact-form-container {
+        padding: 0;
+    }
+    
+    .contact-form {
+        padding: 20px;
+    }
+    
+    .project-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 15px;
+    }
+    
+    /* Navegação mobile */
+    nav {
+        z-index: 1000;
+        top: 60px;
+    }
+    
+    .mobile-menu-button.active + .logo + nav {
+        transform: translateY(0);
+    }
+    
+    /* Header mobile */
+    .logo {
+        display: flex !important;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--accent-color);
+        margin-right: auto;
+    }
+    
+    .header-controls {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+    }
+    
+    .mobile-menu-button {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 20px;
+        margin-right: 15px;
+        cursor: pointer;
+        z-index: 1001;
+    }
+    
+    .mobile-menu-button span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: var(--text-color);
+        transition: all 0.3s ease;
+    }
+    
+    .mobile-menu-button.active span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+    
+    .mobile-menu-button.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .mobile-menu-button.active span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+    
+    /* Ajustes para o conteúdo principal */
+    main {
+        padding-top: 80px !important;
+    }
+}
+
+/* Ajustes para telas muito pequenas */
+@media screen and (max-width: 480px) {
+    section {
+        padding: 1.5rem 0.75rem;
+    }
+    
+    .contact-info {
+        padding: 15px;
+    }
+    
+    .contact-form {
+        padding: 15px;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        padding: 10px;
+    }
+    
+    .submit-btn {
+        padding: 10px 20px;
+    }
+    
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ---- CORREÇÕES PARA HEADER MOBILE ---- */
+body:not(.dict-page) header .logo {
+    content: "PORTFOLIO";
+}
+
+/* Garantir que o logo seja visível e correto em cada página */
+body.dict-page header .logo {
+    content: "DICIONÁRIO HTML";
+}
+
+/* Correção para o menu dropdown mobile */
+@media screen and (max-width: 768px) {
+    /* Navegação mobile - correção de bugs */
+    nav {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: var(--bg-color);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transform: translateY(-150%);
+        transition: transform 0.3s ease;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+    }
+    
+    nav.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    /* Correção específica para o seletor que ativa o menu */
+    .mobile-menu-button.active ~ nav,
+    .mobile-menu-button.active + .logo + nav,
+    .mobile-menu-button.active + div + nav {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+}
+

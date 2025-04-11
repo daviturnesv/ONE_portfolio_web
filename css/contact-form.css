@@ -1,0 +1,146 @@
+/* Estilos para o formulário de contato */
+.contact-form {
+    position: relative;
+    background-color: var(--card-bg, #fff);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.contact-form.submitting {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #4d9cde;
+    box-shadow: 0 0 0 3px rgba(77, 156, 222, 0.2);
+    outline: none;
+}
+
+.submit-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: #4d9cde;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s, opacity 0.3s;
+    width: 100%;
+}
+
+.submit-btn:hover {
+    background-color: #3a89c9;
+}
+
+.submit-btn:disabled {
+    background-color: #a0c8e9;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.submit-btn .spinner {
+    display: none;
+}
+
+.submitting .submit-btn .spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+    margin-left: 8px;
+}
+
+.form-status {
+    margin-top: 20px;
+}
+
+.success-message,
+.error-message {
+    display: none;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 15px;
+    font-weight: 500;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.success-message.active,
+.error-message.active {
+    opacity: 1;
+}
+
+.success-message {
+    background-color: rgba(40, 167, 69, 0.1);
+    color: #28a745;
+    border: 1px solid #28a745;
+}
+
+.error-message {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+    border: 1px solid #dc3545;
+}
+
+/* Adicionar estilos para garantir visibilidade */
+.form-status {
+    margin-top: 20px;
+    position: relative;
+    min-height: 60px;
+}
+
+/* Animação de carregamento */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.fa-spinner {
+    animation: spin 1s linear infinite;
+}
+
+/* Responsividade */
+@media screen and (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+    }
+    
+    .contact-info,
+    .contact-form-container {
+        width: 100%;
+    }
+}

@@ -1,0 +1,88 @@
+/* Estilos para os cards de projetos */
+.project-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--bg-secondary);
+}
+
+.project-card h3 {
+    font-size: 1.2rem;
+    margin: 15px 15px 10px;
+    color: var(--heading-color);
+}
+
+.project-card p {
+    font-size: 0.9rem;
+    margin: 0 15px 15px;
+    color: var(--text-color);
+    line-height: 1.5;
+    flex-grow: 1;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin: 0 15px 15px;
+}
+
+.project-tech span {
+    background-color: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 0.8rem;
+    padding: 3px 8px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.project-tech span:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.project-links {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 15px 15px;
+}
+
+.project-btn {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+    justify-content: center;
+}
+
+/* Estilos para placeholders de imagens */
+img[data-is-placeholder="true"] {
+    background: linear-gradient(135deg, var(--bg-secondary) 25%, var(--card-bg) 25%, var(--card-bg) 50%, var(--bg-secondary) 50%, var(--bg-secondary) 75%, var(--card-bg) 75%, var(--card-bg) 100%);
+    background-size: 20px 20px;
+}
+
+/* Responsividade */
+@media screen and (max-width: 768px) {
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .project-card img {
+        height: 180px;
+    }
+}

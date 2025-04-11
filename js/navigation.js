@@ -54,9 +54,18 @@ class GerenciadorNavegacao {
     }
     
     fecharMenuMobileSeNecessario() {
-        this.botaoMenuMobile.classList.remove('active');
-        this.menuNavegacao.classList.remove('active');
-        document.body.classList.remove('menu-open');
+        if (window.innerWidth <= this.tamanhoDaTela.mobile && this.botaoMenuMobile.classList.contains('active')) {
+            this.botaoMenuMobile.classList.remove('active');
+            this.menuNavegacao.classList.remove('active');
+            document.body.classList.remove('menu-open');
+            
+            // Forçar fechamento do menu com um pequeno atraso para permitir a animação
+            setTimeout(() => {
+                this.menuNavegacao.style.transform = 'translateY(-100%)';
+                this.menuNavegacao.style.opacity = '0';
+                this.menuNavegacao.style.visibility = 'hidden';
+            }, 50);
+        }
     }
     
     configurarDestaqueMenu() {
@@ -68,20 +77,29 @@ class GerenciadorNavegacao {
     configurarNavegacaoSuave() {
         this.linksNavegacao.forEach(link => {
             link.addEventListener('click', (e) => {
-                // Se é um link interno
-                if (link.getAttribute('href').startsWith('#')) {
+                // Verificar se o link é para uma seção na mesma página
+                const href = link.getAttribute('href');
+                if (href && href.startsWith('#')) {
                     e.preventDefault();
-                    const targetId = link.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
+                    
+                    // Fechar o menu mobile se necessário
+                    this.fecharMenuMobileSeNecessario();
+                    
+                    // Rolar suavemente para a seção
+                    const targetId = href.substring(1);
+                    const targetElement = document.getElementById(targetId);
                     
                     if (targetElement) {
                         const headerHeight = document.querySelector('header').offsetHeight;
-                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                        const targetPosition = targetElement.offsetTop - headerHeight;
                         
                         window.scrollTo({
                             top: targetPosition,
                             behavior: 'smooth'
                         });
+                        
+                        // Atualizar URL sem recarregar a página
+                        history.pushState(null, null, href);
                     }
                 }
             });
